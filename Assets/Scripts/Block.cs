@@ -12,37 +12,29 @@ public class Block : MonoBehaviour
     //public ObjectPool<GameObject> obstaclePool;
     //public ObjectPool<GameObject> itemPool;
 
-    private int obstacleCount = 0;
-
-	private void Awake()
-	{
-
-	}
-	void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private int installObject = 0;
 
     public void CreateObstacle()
     {
-        if (obstacleCount >= 2)
+        if (installObject >= 2)
             return;
 
         int obstacleIndex = Random.RandomRange(0, obstaclePrefabs.Length);
         int posIndex = Random.RandomRange(0, childPoss.Length);
 
         Instantiate(obstaclePrefabs[obstacleIndex], childPoss[posIndex].position, Quaternion.identity);
-        obstacleCount++;
+		installObject++;
 	}
 	public void CreateItem()
     {
+		if (installObject >= 2)
+			return;
 
-    }
+		int itemIndex = Random.RandomRange(0, itemPrefabs.Length);
+		int posIndex = Random.RandomRange(0, childPoss.Length);
+
+		Instantiate(itemPrefabs[itemIndex], childPoss[posIndex].position, Quaternion.identity);
+		installObject++;
+	}
 
 }
