@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4258167117122520918}
   - component: {fileID: 4605852430058105178}
   m_Layer: 0
-  m_Name: LeftPos
+  m_Name: LeftPocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 6119683679246220696}
   - component: {fileID: 189342866736864675}
   m_Layer: 0
-  m_Name: MiddlePos
+  m_Name: MiddlePocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 6016021270675505275}
   - component: {fileID: 5395852142028776535}
   m_Layer: 0
-  m_Name: RightPos
+  m_Name: RightPocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
