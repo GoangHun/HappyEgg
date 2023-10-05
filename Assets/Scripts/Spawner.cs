@@ -34,7 +34,7 @@ public class Spawner : MonoBehaviour
         } while (pockets[posIndex].childGo != null);
 
         pockets[posIndex].childGo = Instantiate(obstaclePrefabs[obstacleIndex], pockets[posIndex].transform.position, Quaternion.identity);
-		pockets[posIndex].childGo.GetComponent<Item>().SetPocket(pockets[posIndex]);    //Instantiate에서 부모 객체를 정해버리면 스케일 값까지 적용되기 때문에 생성 뒤 배정
+		pockets[posIndex].childGo.GetComponent<Obstacle>().SetPocket(pockets[posIndex]);    //Instantiate에서 부모 객체를 정해버리면 스케일 값까지 적용되기 때문에 생성 뒤 배정
 
 		fullPockets++;
 	}

@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
 		if (!IsGameover)
         {
             Timer -= Time.deltaTime;
+            UIManager.Instance.UpdateTimerProgress(Timer / 180f);
 
             if (Timer < 0)
             {
