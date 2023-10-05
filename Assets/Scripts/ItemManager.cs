@@ -6,7 +6,6 @@ using UnityEngine.Pool;
 public class ItemManager : MonoBehaviour
 {
     private static ItemManager instance;
-
     public static ItemManager Instance
     {
         get
@@ -19,7 +18,10 @@ public class ItemManager : MonoBehaviour
         }
     }
 
-	private void Awake()
+    public bool IsMagnetic { get; set; } = false;
+    public List<ScoreItem> ScoreItems { get; set; } = new List<ScoreItem>();
+
+    private void Awake()
 	{
 		if (instance != null)
         {
@@ -30,5 +32,25 @@ public class ItemManager : MonoBehaviour
             instance = this;
         }    
 	}
-    [HideInInspector]public List<ScoreItem> scoreItems = new List<ScoreItem>();
+
+    public void ToMagnetic()
+    {
+        foreach (var item in ScoreItems)
+        {
+            item.IsMagnetic = true;
+        }
+    }
+
+    public void ActionMagnet(float time)
+    {
+        StartCoroutine(MagnetCoroutine(time));
+    }
+
+    public IEnumerator MagnetCoroutine(float time)
+    {
+        IsMagnetic = true;
+        ToMagnetic();
+        yield return new WaitForSeconds(time);
+        IsMagnetic = false;
+    }
 }

@@ -35,6 +35,7 @@ public class Spawner : MonoBehaviour
 		//Instantiate에서 부모 객체를 정해버리면 스케일 값까지 적용되기 때문에 생성 뒤 배정
 		pockets[posIndex].childGo.GetComponent<Obstacle>().SetPocket(pockets[posIndex]);
 	}
+
 	public void CreateItem()
     {
 		int itemIndex = Random.RandomRange(0, itemPrefabs.Length);
@@ -49,8 +50,9 @@ public class Spawner : MonoBehaviour
         if (itemIndex == 0)
         {
 			var item = pockets[posIndex].childGo.GetComponent<ScoreItem>();
-			ItemManager.Instance.scoreItems.Add(item);
+			ItemManager.Instance.ScoreItems.Add(item);
 			item.SetPocket(pockets[posIndex]);
+            item.IsMagnetic = ItemManager.Instance.IsMagnetic;
 		}
 		else
         {
@@ -69,7 +71,7 @@ public class Spawner : MonoBehaviour
             {
                 var scoreItem = pocket.childGo.GetComponent<ScoreItem>();
 				if (scoreItem != null)
-					ItemManager.Instance.scoreItems.Remove(scoreItem);
+					ItemManager.Instance.ScoreItems.Remove(scoreItem);
 
 				Destroy(pocket.childGo);
 				pocket.childGo = null;

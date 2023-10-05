@@ -5,11 +5,10 @@ using UnityEngine;
 public class ScoreItem : Item
 {
 	public int score = 1000;
-	public float speed = 1f;	//자석에 끌리는 속도
-	[HideInInspector]public bool isMagnetic = false;
+	public float speed = 10f;	//자석에 끌리는 속도
+	public bool IsMagnetic { get; set; } = false;
 
-
-	public void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
 	{
 		if (other.CompareTag("Player"))
 		{
@@ -17,17 +16,29 @@ public class ScoreItem : Item
 		}
 	}
 
-	public void PickUpItem()
+    private void FixedUpdate()
+    {
+		if (IsMagnetic)
+		{
+			Move();
+        }
+    }
+
+    public void PickUpItem()
 	{
 		GameManager.Instance.AddScore(score);
-		ItemManager.Instance.scoreItems.Remove(this);
+		ItemManager.Instance.ScoreItems.Remove(this);
 		base.PickUpItem();
 	}
 
-	public void Move(Vector3 dir)
+	public void Move()
 	{
-		dir.Normalize();
-		transform.position = dir * speed * Time.deltaTime;
+        if (transform.parent != null)
+            transform.parent = null;
+
+        var dir = GameManager.Instance.Player.transform.position - transform.position;
+        dir.Normalize();
+		transform.position += dir * speed * Time.fixedDeltaTime;
 	}
 
 }

@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     private Renderer renderer;
 
     public float hitEffectTime = 1f;
-    [HideInInspector]public bool isMagnetic = false;
+    public bool IsMagnetic { get; set; } = false;
 
     private void Awake()
     {
@@ -19,17 +19,6 @@ public class Player : MonoBehaviour
 		GameManager.Instance.Player = this;
 	}
 
-	private void FixedUpdate()
-	{
-        if (isMagnetic && ItemManager.Instance.scoreItems.Count != 0)
-        {
-            foreach (var item in ItemManager.Instance.scoreItems)
-            {
-                var dir = transform.position - item.transform.position;
-               // item.Move(dir);
-            }
-        }
-    }
 
 	public void OnDamage(float damage)
     {

@@ -5,7 +5,7 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class Item : MonoBehaviour, IItem
 {
-	public Pocket ParentPocket { get; private set; } = null;
+	public Pocket ParentPocket { get; protected set; } = null;
 
 	public void PickUpItem()
 	{

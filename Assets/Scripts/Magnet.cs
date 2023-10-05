@@ -15,14 +15,9 @@ public class Magnet : Item
 
 	public void PickUpItem()
 	{
-		StartCoroutine(Action());
-		base.PickUpItem();
-	}
+		ItemManager.Instance.ActionMagnet(time);
+        base.PickUpItem();
+    }
 
-	private IEnumerator Action()
-	{
-		GameManager.Instance.Player.isMagnetic = true;
-		yield return new WaitForSeconds(time);
-		GameManager.Instance.Player.isMagnetic = false;
-	}
+	
 }
