@@ -20,8 +20,7 @@ public class UIManager : MonoBehaviour
 
 	public Image timerProgress;
 
-
-	public void UpdateTimerProgress(float time)
+	public void UpdateTimerProgress(float time) 
 	{
 		timerProgress.fillAmount = time;
 	}
