@@ -5,4 +5,5 @@ using UnityEngine;
 public interface IItem
 {
 	void PickUpItem();
+	void SetPocket(Pocket parentPocket);
 }

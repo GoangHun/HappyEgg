@@ -167,7 +167,7 @@ MonoBehaviour:
   obstaclePrefabs:
   - {fileID: 8039872794254532310, guid: 7bcc2885e9f67024cb141a1aa65e517f, type: 3}
   itemPrefabs:
-  - {fileID: 4952706832872222810, guid: 64e66c563af634147ad51ba19cac9170, type: 3}
+  - {fileID: 6858522305033648612, guid: 64e66c563af634147ad51ba19cac9170, type: 3}
   pocketTransforms:
   - {fileID: 4258167117122520918}
   - {fileID: 6119683679246220696}

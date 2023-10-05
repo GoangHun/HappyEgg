@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScoreItem : MonoBehaviour, IItem
+public class ScoreItem : Item
 {
 	public int score = 10;
+
 
 	public void OnTriggerEnter(Collider other)
 	{
@@ -17,7 +18,7 @@ public class ScoreItem : MonoBehaviour, IItem
 	public void PickUpItem()
 	{
 		GameManager.Instance.AddScore(score);
-		Destroy(gameObject);
+		base.PickUpItem();
 	}
 
 }

@@ -6,7 +6,7 @@ public class Background : MonoBehaviour
 {
 	public float speed = 0f;
 
-	public Block[] blocks;
+	public Spawner[] blocks;
 
 	private float blockHeight;
 
@@ -17,14 +17,14 @@ public class Background : MonoBehaviour
 
 	public void OnTriggerExit(Collider collision)
 	{
-		var target = collision.GetComponent<Block>();
+		var target = collision.GetComponent<Spawner>();
 		if (collision.CompareTag("Block"))
 		{
 			var pos = new Vector3(0, 0, blockHeight * 2);
 			target.transform.position += pos;
 			target.Clear();
 			target.CreateObstacle();
-			//target.CreateItem();
+			target.CreateItem();
         }
 	}
 
