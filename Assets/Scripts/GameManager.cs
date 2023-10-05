@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     }
     private static GameManager instance;
 
+    public int Score { get; private set; } = 0;
     public float Timer { get; private set; }
     public bool IsGameover { get; private set; }
     public bool IsPause { get; private set; }
@@ -28,8 +29,16 @@ public class GameManager : MonoBehaviour
 			Destroy(gameObject);
 		}
 	}
+	public void AddScore(int score)
+    {
+		if (!IsGameover)
+		{
+			Score += score;
+		}
+	}
 
-    public void AddTime(float time)
+
+	public void AddTime(float time)
     {
         if (!IsGameover)
         {

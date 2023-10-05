@@ -35,9 +35,9 @@ public class Block : MonoBehaviour
         } while (pockets[posIndex].go != null);
 
         pockets[posIndex].go = Instantiate(obstaclePrefabs[obstacleIndex], pocketTransforms[posIndex].position, Quaternion.identity);
-        pockets[posIndex].go.transform.parent = transform;
+        pockets[posIndex].go.transform.parent = transform;  //Instantiate에서 부모 객체를 정해버리면 스케일 값까지 적용되기 때문에 생성 뒤 배정
 
-        fullPockets++;
+		fullPockets++;
 	}
 	public void CreateItem()
     {
@@ -52,7 +52,7 @@ public class Block : MonoBehaviour
         } while (pockets[posIndex].go != null);
 
         pockets[posIndex].go = Instantiate(itemPrefabs[itemIndex], pocketTransforms[posIndex].position, Quaternion.identity);
-        pockets[posIndex].go.transform.parent = transform;  //Instantiate에서 부모 객체를 정해버리면 스케일 값까지 적용되기 때문에 생성 뒤 배정
+        pockets[posIndex].go.transform.parent = transform;  
 
         fullPockets++;
 	}
@@ -63,8 +63,10 @@ public class Block : MonoBehaviour
 
         foreach (var pocket in pockets)
         {
-            Destroy( pocket.go );
+            if ( pocket.go != null )
+            {
+				Destroy(pocket.go);
+			}
         }
     }
-
 }
