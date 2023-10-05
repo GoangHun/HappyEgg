@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance
+	private static GameManager instance;
+	public static GameManager Instance
     {
         get
         {
             if (instance == null)
             {
-                instance = FindObjectOfType<GameManager>();
-            }
+				return null;
+			}
             return instance;
         }
     }
-    private static GameManager instance;
 
     public int Score { get; private set; } = 0;
     public float Timer { get; private set; } = 180f;
     public bool IsGameover { get; private set; }
     public bool IsPause { get; private set; }
+    public Player Player { get; set; }
 
 	private void Awake()
 	{
@@ -28,6 +29,10 @@ public class GameManager : MonoBehaviour
         {
 			Destroy(gameObject);
 		}
+        else
+        {
+            instance = this;
+        }
 	}
 
 	private void Update()
@@ -58,6 +63,7 @@ public class GameManager : MonoBehaviour
         if (!IsGameover)
         {
             Timer += time;
+            Timer = Timer > 180f ? 180f : Timer;
         }
     }
 
