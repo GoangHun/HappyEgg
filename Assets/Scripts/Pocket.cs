@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Pocket : MonoBehaviour
 {
-    [HideInInspector]public GameObject go = null;
+    [HideInInspector]public GameObject childGo = null;
 }

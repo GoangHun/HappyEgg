@@ -31,10 +31,10 @@ public class Spawner : MonoBehaviour
         do
         {
             posIndex = Random.RandomRange(0, pockets.Length);
-        } while (pockets[posIndex].go != null);
+        } while (pockets[posIndex].childGo != null);
 
-        pockets[posIndex].go = Instantiate(obstaclePrefabs[obstacleIndex], pockets[posIndex].transform.position, Quaternion.identity);
-        pockets[posIndex].go.transform.parent = pockets[posIndex].transform;  //Instantiate에서 부모 객체를 정해버리면 스케일 값까지 적용되기 때문에 생성 뒤 배정
+        pockets[posIndex].childGo = Instantiate(obstaclePrefabs[obstacleIndex], pockets[posIndex].transform.position, Quaternion.identity);
+		pockets[posIndex].childGo.GetComponent<Item>().SetPocket(pockets[posIndex]);    //Instantiate에서 부모 객체를 정해버리면 스케일 값까지 적용되기 때문에 생성 뒤 배정
 
 		fullPockets++;
 	}
@@ -48,10 +48,10 @@ public class Spawner : MonoBehaviour
         do
         {
             posIndex = Random.RandomRange(0, pockets.Length);
-        } while (pockets[posIndex].go != null);
+        } while (pockets[posIndex].childGo != null);
 
-        pockets[posIndex].go = Instantiate(itemPrefabs[itemIndex], pockets[posIndex].transform.position, Quaternion.identity);
-        pockets[posIndex].go.GetComponent<Item>().SetPocket(pockets[posIndex]);
+        pockets[posIndex].childGo = Instantiate(itemPrefabs[itemIndex], pockets[posIndex].transform.position, Quaternion.identity);
+        pockets[posIndex].childGo.GetComponent<Item>().SetPocket(pockets[posIndex]);
 
         fullPockets++;
 	}
@@ -62,10 +62,10 @@ public class Spawner : MonoBehaviour
 
         foreach (var pocket in pockets)
         {
-            if ( pocket.go != null)
+            if ( pocket.childGo != null)
             {
-				Destroy(pocket.go);
-				pocket.go = null;
+				Destroy(pocket.childGo);
+				pocket.childGo = null;
 			}
 		}
     }

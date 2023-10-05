@@ -13,6 +13,11 @@ public class Player : MonoBehaviour
         renderer = GetComponent<Renderer>();
     }
 
+    public void OnDamage(float damage)
+    {
+        GameManager.Instance.SetTimer(-damage);
+    }
+
     public IEnumerator OnHitEffect()
     {
         float time = Time.time + hitEffectTime;

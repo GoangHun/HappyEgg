@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -731,7 +731,7 @@ PrefabInstance:
         type: 3}
       propertyPath: obstaclePrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 1965199952975949898, guid: b499b80ed728d4247949a3beb805726e,
+      objectReference: {fileID: 8039872794254532310, guid: 7bcc2885e9f67024cb141a1aa65e517f,
         type: 3}
     - target: {fileID: -110866816813163702, guid: 0a1485f33812a824f94fc2733cd22b4a,
         type: 3}
@@ -894,7 +894,7 @@ PrefabInstance:
         type: 3}
       propertyPath: obstaclePrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 1965199952975949898, guid: b499b80ed728d4247949a3beb805726e,
+      objectReference: {fileID: 8039872794254532310, guid: 7bcc2885e9f67024cb141a1aa65e517f,
         type: 3}
     - target: {fileID: -110866816813163702, guid: 0a1485f33812a824f94fc2733cd22b4a,
         type: 3}

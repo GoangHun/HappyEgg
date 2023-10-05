@@ -9,6 +9,7 @@ public class Item : MonoBehaviour, IItem
 
 	public void PickUpItem()
 	{
+		ParentPocket.childGo = null;
 		ParentPocket = null;
 		Destroy(gameObject);
 	}
