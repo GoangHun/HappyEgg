@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private Renderer renderer;
+    private SkinnedMeshRenderer renderer;
 	private PlayerInput playerInput;
 
 	public Pocket ShootingItemPocket;
@@ -14,9 +14,8 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        renderer = GetComponent<Renderer>();
+        renderer = GetComponentInChildren<SkinnedMeshRenderer>();
 		playerInput = GetComponent<PlayerInput>();
-
 	}
 
 	private void Start()
