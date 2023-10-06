@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
     private Renderer renderer;
 
+
+    public Pocket ShootingItemPocket;
     public float hitEffectTime = 1f;
     public bool IsMagnetic { get; set; } = false;
 
