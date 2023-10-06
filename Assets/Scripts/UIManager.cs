@@ -25,8 +25,12 @@ public class UIManager : MonoBehaviour
 	public Image timerProgress;
 	public GameObject pausePanel;
 	public GameObject countTextGO;
-
+	public GameObject[] shootingItems;
 	public float countTime = 3f;
+	public float shootingTimer = 30f;
+
+	private float lastShootingTime = 0f;
+	private int currentShootingItem = 0;
 
 	private void Awake()
 	{

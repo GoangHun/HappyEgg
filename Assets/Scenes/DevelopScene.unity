@@ -603,6 +603,7 @@ GameObject:
   - component: {fileID: 1019738659}
   - component: {fileID: 1019738658}
   - component: {fileID: 1019738663}
+  - component: {fileID: 1019738665}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -758,6 +759,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1019738665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019738657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56e77cbe774e0324f8761384673a4161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireButtonName: Fire1
+  mouseMoveName: Mouse X
+  startPos: {x: 0, y: 0, z: 0}
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!1 &1022174632
 GameObject:
   m_ObjectHideFlags: 0
@@ -819,7 +836,9 @@ MonoBehaviour:
   timerProgress: {fileID: 1353983282}
   pausePanel: {fileID: 1296679068}
   countTextGO: {fileID: 1320021786}
+  shootingItems: []
   countTime: 3
+  shootingTimer: 30
 --- !u!114 &1022174637
 MonoBehaviour:
   m_ObjectHideFlags: 0

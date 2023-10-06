@@ -1,16 +1,21 @@
-﻿using UnityEngine;
+﻿using System.Threading;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour {
     private Transform playerTransform;
     private int currentTransIndex;
+	private PlayerInput playerInput;
+
 
 	public Transform[] lineTransforms;
     public LayerMask layerMask;
 
+
 	private void Awake()
 	{
 		playerTransform = GetComponent<Transform>();
+		playerInput = GetComponent<PlayerInput>();
 		currentTransIndex = 1;
 	}
 
@@ -20,15 +25,26 @@ public class PlayerMovement : MonoBehaviour {
 
 	private void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.LeftArrow))
+		if (!GameManager.Instance.IsGameover)
 		{
-			--currentTransIndex;
-			currentTransIndex = currentTransIndex < 0 ? 2 : currentTransIndex;
-		}
-		else if (Input.GetKeyDown(KeyCode.RightArrow))
-		{
-			++currentTransIndex;
-			currentTransIndex = currentTransIndex % 3;
+			if (Input.GetMouseButtonDown(0))
+				playerInput.startPos = Input.mousePosition;
+			if (Input.GetMouseButtonUp(0))
+			{
+				playerInput.endPos = Input.mousePosition;
+				var vec = playerInput.endPos.x - playerInput.startPos.x;
+
+				if (vec > 0)
+				{
+					++currentTransIndex;
+					currentTransIndex = currentTransIndex > 2 ? 2 : currentTransIndex;
+				}
+				else if (vec < 0)
+				{
+					--currentTransIndex;
+					currentTransIndex = currentTransIndex < 0 ? 0 : currentTransIndex;
+				}
+			}
 		}
 	}
 

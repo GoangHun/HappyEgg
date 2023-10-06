@@ -1,15 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ShootingItem : Item
 {
-	
+	public event Action onAction;
 
-	public void SetPocket(Pocket playerPocket)
+	public void Action()
 	{
-		transform.parent = playerPocket.transform;
-		ParentPocket = playerPocket;
+		if (onAction != null) onAction();
 	}
-
 }
