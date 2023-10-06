@@ -71,7 +71,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 5ea2c925fae7e4f448a9996883c72d36,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 20.625
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5ea2c925fae7e4f448a9996883c72d36,
         type: 3}
@@ -100,6 +100,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4485388798395095945}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ea2c925fae7e4f448a9996883c72d36,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8531871762195499161}
   m_SourcePrefab: {fileID: 100100000, guid: 5ea2c925fae7e4f448a9996883c72d36, type: 3}
 --- !u!1 &226662359758796214 stripped
 GameObject:
@@ -141,3 +145,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 8
+--- !u!111 &8531871762195499161
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226662359758796214}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 4bdbf1072f4ee7f43b508568ee041b84, type: 2}
+  m_Animations:
+  - {fileID: 0}
+  - {fileID: 7400000, guid: 4bdbf1072f4ee7f43b508568ee041b84, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
