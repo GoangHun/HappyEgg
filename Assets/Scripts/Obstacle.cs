@@ -17,9 +17,10 @@ public class Obstacle : MonoBehaviour
 		}
     }
 
-    public void OnDamage()
+    public void OnSmash()
     {
-		ParentPocket.childGo = null;
+        ObstacleManager.Instance.Obstacles.Remove(this);
+        ParentPocket.childGo = null;
 		ParentPocket = null;
 		Destroy(gameObject);
 	}

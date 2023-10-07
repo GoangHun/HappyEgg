@@ -6,7 +6,7 @@ public class Conveyor : MonoBehaviour
 {
 	public float speed = 0f;
 
-	public Spawner[] blocks;
+	public Block[] blocks;
 
 	private float blockHeight;
 
@@ -17,7 +17,7 @@ public class Conveyor : MonoBehaviour
 
 	public void OnTriggerExit(Collider collision)
 	{
-		var target = collision.GetComponent<Spawner>();
+		var target = collision.GetComponent<Block>();
 		if (collision.CompareTag("Block"))
 		{
 			var pos = new Vector3(0, 0, blockHeight * 2);

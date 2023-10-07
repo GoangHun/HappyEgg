@@ -5,12 +5,16 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private SkinnedMeshRenderer renderer;
-	private PlayerInput playerInput;
-
 	public Pocket ShootingItemPocket;
 	public float hitEffectTime = 1f;
+    public float shootingCoolTime = 30f;
+
     public bool IsMagnetic { get; set; } = false;
+
+    private float lastShootingTime = 0f;
+    private new SkinnedMeshRenderer renderer;
+    private PlayerInput playerInput;
+    public ToyHammer shootingItem;
 
     private void Awake()
     {
@@ -21,12 +25,18 @@ public class Player : MonoBehaviour
 	private void Start()
 	{
 		GameManager.Instance.Player = this;
-	}
+        lastShootingTime = -shootingCoolTime;
+    }
 
 	private void Update()
 	{
-		
-	}
+        if (playerInput.DoubleClick && lastShootingTime + shootingCoolTime < Time.time)
+        {
+            lastShootingTime = Time.time;
+            shootingItem.Action();
+        }
+
+    }
 
 
 	public void OnDamage(float damage)

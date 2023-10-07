@@ -86,7 +86,7 @@ CapsuleCollider:
   m_Radius: 0.58
   m_Height: 1.22
   m_Direction: 1
-  m_Center: {x: 0, y: 0.57, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6702754944443500444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,10 +99,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56e77cbe774e0324f8761384673a4161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireButtonName: Fire1
   mouseMoveName: Mouse X
+  doubleClickDuration: 1
   startPos: {x: 0, y: 0, z: 0}
   endPos: {x: 0, y: 0, z: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &99580608856525515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,6 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShootingItemPocket: {fileID: 0}
   hitEffectTime: 1
+  shootingCoolTime: 30
 --- !u!1001 &8592772023755092819
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -148,6 +152,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Egg
+      objectReference: {fileID: 0}
+    - target: {fileID: 3295690693072712637, guid: 2a7aadcbb75c8e9499da81394f641c9f,
+        type: 3}
+      propertyPath: m_Name
+      value: ShootingItemPocket
       objectReference: {fileID: 0}
     - target: {fileID: 3295690693073137563, guid: 2a7aadcbb75c8e9499da81394f641c9f,
         type: 3}
@@ -215,9 +224,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3295690693072712639, guid: 2a7aadcbb75c8e9499da81394f641c9f, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3295690693072712637, guid: 2a7aadcbb75c8e9499da81394f641c9f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1602311354199742586}
   m_SourcePrefab: {fileID: 100100000, guid: 2a7aadcbb75c8e9499da81394f641c9f, type: 3}
 --- !u!4 &6522071633291205832 stripped
 Transform:
@@ -225,3 +239,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8592772023755092819}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6522071633291559150 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3295690693072712637, guid: 2a7aadcbb75c8e9499da81394f641c9f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8592772023755092819}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1602311354199742586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6522071633291559150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6a64d0244e9f7d43924383d9af55fbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  childGo: {fileID: 0}

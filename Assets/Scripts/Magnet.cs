@@ -18,6 +18,4 @@ public class Magnet : Item
 		ItemManager.Instance.ActionMagnet(time);
         base.PickUpItem();
     }
-
-	
 }

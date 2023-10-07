@@ -19,4 +19,11 @@ public class Item : MonoBehaviour, IItem
 		transform.parent = parentPocket.transform;
 		ParentPocket = parentPocket;
 	}
+
+    public void OnSmash()
+    {
+        ParentPocket.childGo = null;
+        ParentPocket = null;
+        Destroy(gameObject);
+    }
 }

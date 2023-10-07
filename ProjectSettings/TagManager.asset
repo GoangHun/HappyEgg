@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Block
   - Obstacle
+  - Item
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - 

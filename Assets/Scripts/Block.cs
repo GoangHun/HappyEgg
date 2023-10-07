@@ -5,13 +5,12 @@ using UnityEngine.Pool;
 using UnityEngine.SocialPlatforms.Impl;
 using static UnityEditor.Progress;
 
-public class Spawner : MonoBehaviour
+public class Block : MonoBehaviour
 {
     public GameObject[] obstaclePrefabs;
     public GameObject[] itemPrefabs;
 
     private Pocket[] pockets;
-    private int fullPockets = 0;
 
     //오브젝트풀 사용 여부 보류
     //public ObjectPool<GameObject> obstaclePool;
@@ -31,9 +30,12 @@ public class Spawner : MonoBehaviour
             posIndex = Random.RandomRange(0, pockets.Length);
         } while (pockets[posIndex].childGo != null);
 
-        pockets[posIndex].childGo = Instantiate(obstaclePrefabs[obstacleIndex], pockets[posIndex].transform.position, Quaternion.identity);
-		//Instantiate에서 부모 객체를 정해버리면 스케일 값까지 적용되기 때문에 생성 뒤 배정
-		pockets[posIndex].childGo.GetComponent<Obstacle>().SetPocket(pockets[posIndex]);
+        var go = Instantiate(obstaclePrefabs[obstacleIndex], pockets[posIndex].transform.position, Quaternion.identity);
+        var obstacle = go.GetComponent<Obstacle>();
+        //Instantiate에서 부모 객체를 정해버리면 스케일 값까지 적용되기 때문에 생성 뒤 배정
+        obstacle.SetPocket(pockets[posIndex]);
+        ObstacleManager.Instance.Obstacles.Add(obstacle);
+        pockets[posIndex].childGo = go;
 	}
 
 	public void CreateItem()
@@ -63,19 +65,21 @@ public class Spawner : MonoBehaviour
 
     public void Clear()
     {
-        fullPockets = 0;
-
         foreach (var pocket in pockets)
         {
-            if ( pocket.childGo != null)
-            {
-                var scoreItem = pocket.childGo.GetComponent<ScoreItem>();
-				if (scoreItem != null)
-					ItemManager.Instance.ScoreItems.Remove(scoreItem);
+            if (pocket.childGo == null)
+                continue;
 
-				Destroy(pocket.childGo);
-				pocket.childGo = null;
-			}
-		}
+            if (pocket.childGo.CompareTag("Item"))
+            {
+                var item = pocket.childGo.GetComponent<Item>();
+                item.OnSmash();
+            }
+            else if (pocket.childGo.CompareTag("Obstacle"))
+            {
+                var obstacle = pocket.childGo.GetComponent<Obstacle>();
+                obstacle.OnSmash();
+            }
+        }
     }
 }

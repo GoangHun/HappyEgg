@@ -31,7 +31,13 @@ public class ScoreItem : Item
 		base.PickUpItem();
 	}
 
-	public void Move()
+    public void OnSmash()
+    {
+		ItemManager.Instance.ScoreItems.Remove(this);
+		base.OnSmash();
+    }
+
+    public void Move()
 	{
         if (transform.parent != null)
             transform.parent = null;

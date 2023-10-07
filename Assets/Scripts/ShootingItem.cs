@@ -5,10 +5,14 @@ using UnityEngine;
 
 public class ShootingItem : Item
 {
-	public event Action onAction;
+	protected Action onAction;
 
 	public void Action()
 	{
-		if (onAction != null) onAction();
-	}
+		Debug.Log(onAction != null);
+		if (onAction != null)
+		{
+            onAction();
+        }		
+    }
 }
