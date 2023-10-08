@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,7 +25,10 @@ public class GameManager : MonoBehaviour
     public bool IsPause { get; private set; }
     public Player Player { get; set; }
 
-	private void Awake()
+    public Dictionary<int, int> StageInfo { get; private set; } = new Dictionary<int, int>(); //스테이지 넘버, 장애물 생성 개수
+    public int CurrentStageNum { get; private set; } = 1;
+
+    private void Awake()
 	{
         if (instance != null)
         {
@@ -33,7 +38,13 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
-	}
+
+        var obstacleTable = DataTableMgr.GetTable<ObstacleTable>();
+        for (int i = 1; i <= obstacleTable.GetCount(); i++)
+        {
+            StageInfo.Add(i, obstacleTable.GetObstacleCount(i));
+        }
+    }
 
 	private void Update()
 	{

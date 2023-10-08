@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Magnet : Item
 {
-	public float time = 8f;
+	public float durationTime = 8f;
 	public void OnTriggerEnter(Collider other)
 	{
 		if (other.CompareTag("Player"))
@@ -15,7 +15,7 @@ public class Magnet : Item
 
 	public void PickUpItem()
 	{
-		ItemManager.Instance.ActionMagnet(time);
+		ItemManager.Instance.ActionMagnet(durationTime);
         base.PickUpItem();
     }
 }

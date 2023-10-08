@@ -7,7 +7,8 @@ public class Item : MonoBehaviour, IItem
 {
 	public Pocket ParentPocket { get; protected set; } = null;
 
-	public void PickUpItem()
+
+    public void PickUpItem()
 	{
 		ParentPocket.childGo = null;
 		ParentPocket = null;
