@@ -44,21 +44,6 @@ public class UIManager : MonoBehaviour
 		}
 	}
 
-	private void Update()
-	{
-		if (Input.GetKeyUp(KeyCode.Alpha1))
-		{
-			Pause();
-		}
-		if (Input.GetKeyUp(KeyCode.Alpha2))
-		{
-			Continue();
-		}
-		if (Input.GetKeyUp(KeyCode.Alpha3))
-		{
-			Restart();
-		}
-	}
 
 	public void UpdateTimerProgress(float time) 
 	{
@@ -68,7 +53,16 @@ public class UIManager : MonoBehaviour
 	public void Restart()
 	{
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-	}
+
+		//var value = ItemManager.Instance.itemRezenInfos["Hourglass"];
+		//value.lastRezenTime = Time.time;
+		//      ItemManager.Instance.itemRezenInfos["Hourglass"] = value;
+		//      value = ItemManager.Instance.itemRezenInfos["Magnet"];
+		//      value.lastRezenTime = Time.time;
+		//      ItemManager.Instance.itemRezenInfos["Magnet"] = value;
+
+        Time.timeScale = 1f;
+    }
 
 	public void Pause()
 	{

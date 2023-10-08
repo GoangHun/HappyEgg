@@ -61,11 +61,13 @@ public class Block : MonoBehaviour
     {
         for (int i = 0; i < itemPrefabs.Length; i++)
         {
-            itemRezenInfos.TryGetValue(itemPrefabs[i].name, out RezenInfo rezenInfo);
+            var rezenInfo = itemRezenInfos[itemPrefabs[i].name];
 
             if (rezenInfo.lastRezenTime + rezenInfo.rezenDuration < Time.time)
             {
-                itemRezenInfos[itemPrefabs[i].name] = new RezenInfo { rezenDuration = rezenInfo.rezenDuration, lastRezenTime = Time.time};
+                rezenInfo.lastRezenTime = Time.time;
+                itemRezenInfos[itemPrefabs[i].name] = rezenInfo;
+
                 int posIndex = Random.Range(0, pockets.Length);
                 while (pockets[posIndex].childGo != null)
                 {
