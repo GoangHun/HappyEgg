@@ -1,7 +1,8 @@
 using System.Collections;
 using TMPro;
-using UnityEditor.SearchService;
+using UnityEngine.SearchService;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -23,6 +24,7 @@ public class UIManager : MonoBehaviour
 	}
 
 	public Image timerProgress;
+	public GameObject scoreTextGO;
 	public GameObject pausePanel;
 	public GameObject countTextGO;
 	public GameObject[] shootingItems;
@@ -45,7 +47,7 @@ public class UIManager : MonoBehaviour
 	}
 
 
-	public void UpdateTimerProgress(float time) 
+    public void UpdateTimerProgress(float time) 
 	{
 		timerProgress.fillAmount = time;
 	}
@@ -53,14 +55,6 @@ public class UIManager : MonoBehaviour
 	public void Restart()
 	{
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
-		//var value = ItemManager.Instance.itemRezenInfos["Hourglass"];
-		//value.lastRezenTime = Time.time;
-		//      ItemManager.Instance.itemRezenInfos["Hourglass"] = value;
-		//      value = ItemManager.Instance.itemRezenInfos["Magnet"];
-		//      value.lastRezenTime = Time.time;
-		//      ItemManager.Instance.itemRezenInfos["Magnet"] = value;
-
         Time.timeScale = 1f;
     }
 

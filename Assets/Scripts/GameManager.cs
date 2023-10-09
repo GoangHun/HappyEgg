@@ -1,8 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class GameManager : MonoBehaviour
 {
@@ -58,6 +58,13 @@ public class GameManager : MonoBehaviour
                 EndGame();
             }
         }
+        else
+        {
+            if (Input.anyKeyDown)
+            {
+                UIManager.Instance.Restart();
+            }
+        }
 	}
 
 	public void AddScore(int score)
@@ -81,6 +88,8 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         IsGameover = true;
+        UIManager.Instance.scoreTextGO.SetActive(true);
+        Time.timeScale = 0f;
     }
 
 }
