@@ -85,7 +85,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void EndGame()
+    public void Play()
+    {
+        IsPause = false;
+        Time.timeScale = 1f;
+    }
+	public void Pause()
+	{
+        IsPause = true;
+		Time.timeScale = 0f;
+	}
+
+	public void EndGame()
     {
         IsGameover = true;
         UIManager.Instance.scoreTextGO.SetActive(true);

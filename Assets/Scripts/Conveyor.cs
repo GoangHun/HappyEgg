@@ -20,7 +20,7 @@ public class Conveyor : MonoBehaviour
 		var target = collision.GetComponent<Block>();
 		if (collision.CompareTag("Block"))
 		{
-			var pos = new Vector3(0, 0, blockHeight * 2);
+			var pos = new Vector3(0, 0, blockHeight * blocks.Length);
 			target.transform.position += pos;
 			target.Clear();
             target.CreateItems();

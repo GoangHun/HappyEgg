@@ -60,17 +60,21 @@ public class UIManager : MonoBehaviour
 
 	public void Pause()
 	{
-		Time.timeScale = 0f;
-		pausePanel.SetActive(true);
+		if (!GameManager.Instance.IsPause)
+		{
+			GameManager.Instance.Pause();
+			pausePanel.SetActive(true);
+		}
+		
 	}
 
 	public void Continue()
 	{
 		pausePanel.SetActive(false);
-		StartCoroutine(Count());
+		StartCoroutine(ContinueCoroutine());
 	}
 
-	private IEnumerator Count()
+	private IEnumerator ContinueCoroutine()
 	{
 		countTextGO.SetActive(true);
 		var countText = countTextGO.GetComponent<TextMeshProUGUI>();
@@ -82,7 +86,7 @@ public class UIManager : MonoBehaviour
 		}
 		countTextGO.SetActive(false);
 		countText.text = countTime.ToString();
-		Time.timeScale = 1f;
+		GameManager.Instance.Play();
 	}
 
 }

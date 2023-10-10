@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 99580608856525515}
   - component: {fileID: 1634982892326165114}
   m_Layer: 0
-  m_Name: Player 1
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,6 +140,7 @@ MonoBehaviour:
   ShootingItemPocket: {fileID: 0}
   hitEffectTime: 1
   shootingCoolTime: 30
+  shootingItem: {fileID: 0}
 --- !u!1001 &8592772023755092819
 PrefabInstance:
   m_ObjectHideFlags: 0

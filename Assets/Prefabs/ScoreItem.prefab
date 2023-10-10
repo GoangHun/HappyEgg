@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 10
-  speed: 15
+  speed: 20
 --- !u!95 &7259407799888699926
 Animator:
   serializedVersion: 5
