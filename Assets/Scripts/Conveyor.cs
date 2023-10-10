@@ -36,4 +36,18 @@ public class Conveyor : MonoBehaviour
 			block.transform.position += Vector3.back * speed * Time.deltaTime;
 		}
 	}
+
+	public void SpeedUpBuff(float speed, float time)
+	{
+		StartCoroutine(SpeedUpCoroutine(speed, time));
+	}
+
+	private IEnumerator SpeedUpCoroutine(float speed, float time)
+	{
+		this.speed = speed;
+		yield return new WaitForSeconds(time);
+		this.speed = 12f;
+	}
+
+
 }

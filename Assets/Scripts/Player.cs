@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Player : MonoBehaviour
 {
-	public Pocket ShootingItemPocket;
+	private Pocket ShootingItemPocket;
+    public Conveyor conveyor;
+    public ParticleSystem shootingEffect;
 	public float hitEffectTime = 1f;
     public float shootingCoolTime = 30f;
+    public float shootingSpeed = 20f;
+    public float shootingSpeedUpTime = 5f;
 
     public bool IsMagnetic { get; set; } = false;
 
@@ -38,6 +43,8 @@ public class Player : MonoBehaviour
 			{
                 currentShootingItem[i].gameObject.SetActive(true);
 				currentShootingItem[i].Action();
+                shootingEffect.Play();
+                conveyor.SpeedUpBuff(shootingSpeed, shootingSpeedUpTime);
 			}   
         }
 
