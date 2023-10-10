@@ -105,7 +105,7 @@ MonoBehaviour:
   endPos: {x: 0, y: 0, z: 0}
   layerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
 --- !u!114 &99580608856525515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,9 +122,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &1634982892326165114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,7 +137,6 @@ MonoBehaviour:
   ShootingItemPocket: {fileID: 0}
   hitEffectTime: 1
   shootingCoolTime: 30
-  shootingItem: {fileID: 0}
 --- !u!1001 &8592772023755092819
 PrefabInstance:
   m_ObjectHideFlags: 0

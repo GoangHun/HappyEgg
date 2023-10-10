@@ -37,9 +37,10 @@ public class ItemManager : MonoBehaviour
 
     public GameObject scoreItemPrefabs;
     public GameObject[] itemPrefabs;    //리젠 우선 순위(1위, 2위...) 
+	public GameObject[] shootingItems;
 
 
-    private void Awake()
+	private void Awake()
 	{
 		if (instance != null)
         {

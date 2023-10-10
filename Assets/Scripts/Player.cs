@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     private float lastShootingTime = 0f;
     private new SkinnedMeshRenderer renderer;
     private PlayerInput playerInput;
-    public ToyHammer shootingItem;
+    private List<ShootingItem> currentShootingItem = new List<ShootingItem>();
 
     private void Awake()
     {
@@ -26,14 +26,19 @@ public class Player : MonoBehaviour
 	{
 		GameManager.Instance.Player = this;
         lastShootingTime = -shootingCoolTime;
-    }
+        SetBroom();
+	}
 
 	private void Update()
 	{
         if (playerInput.DoubleClick && lastShootingTime + shootingCoolTime < Time.time)
         {
             lastShootingTime = Time.time;
-            shootingItem.Action();
+			for (int i = 0; i < currentShootingItem.Count; i++)
+			{
+                currentShootingItem[i].gameObject.SetActive(true);
+				currentShootingItem[i].Action();
+			}   
         }
 
     }
@@ -61,4 +66,24 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
     }
+
+    public void SetToyHammer()
+    {
+        currentShootingItem.Clear();
+		currentShootingItem.Add(ItemManager.Instance.shootingItems[0].GetComponent<ToyHammer>());
+    }
+
+    public void SetRollingPin()
+    {
+		currentShootingItem.Clear();
+		currentShootingItem.Add(ItemManager.Instance.shootingItems[1].GetComponent<RollingPin>());
+	}
+
+	public void SetBroom()
+    {
+		currentShootingItem.Clear();
+		currentShootingItem.Add(ItemManager.Instance.shootingItems[2].GetComponent<Broom>());
+		currentShootingItem.Add(ItemManager.Instance.shootingItems[3].GetComponent<Broom>());
+	}
+
 }

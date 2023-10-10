@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7163567126402952572}
   - component: {fileID: 6229268299917323339}
   - component: {fileID: 8117481782868150217}
+  - component: {fileID: -3033364140138319387}
   - component: {fileID: 1894147154808092155}
   m_Layer: 0
   m_Name: ToyHammer
@@ -86,6 +87,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &-3033364140138319387
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2797508690738957157}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0456a810a65fddc4fa409474b4e444d1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1894147154808092155
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,14 +4,29 @@ using UnityEngine;
 
 public class ToyHammer : ShootingItem
 {
-private void Awake()
+    private Animator animator;
+    private void Awake()
     {
         onAction = () =>
         {
-            gameObject.SetActive(true);
-            ObstacleManager.Instance.AllSmash();
-            gameObject.SetActive(false);
+			StartCoroutine(Swing());
         };
-        gameObject.SetActive(false);
-    }
+
+		animator = GetComponent<Animator>();
+	}
+
+    private IEnumerator Swing()
+    {
+		gameObject.SetActive(true);
+
+		while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
+        {
+			yield return null;
+		}
+
+		ObstacleManager.Instance.AllSmash();
+		gameObject.SetActive(false);
+	}
+
 }
+

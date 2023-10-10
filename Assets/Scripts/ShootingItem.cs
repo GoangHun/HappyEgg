@@ -9,7 +9,6 @@ public class ShootingItem : Item
 
 	public void Action()
 	{
-		Debug.Log(onAction != null);
 		if (onAction != null)
 		{
             onAction();

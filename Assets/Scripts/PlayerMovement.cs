@@ -9,7 +9,6 @@ public class PlayerMovement : MonoBehaviour {
 
 
 	public Transform[] lineTransforms;
-    public LayerMask layerMask;
 
 
 	private void Awake()
