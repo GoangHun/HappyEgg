@@ -48,6 +48,16 @@ public class Player : MonoBehaviour
 			}   
         }
 
+
+        //test code
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+                SetToyHammer();
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+                SetRollingPin();
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+                SetBroom();
+        }
     }
 
 
