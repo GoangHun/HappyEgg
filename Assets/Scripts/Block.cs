@@ -42,7 +42,8 @@ public class Block : MonoBehaviour
                 return;
             int obstacleIndex = Random.Range(0, obstaclePrefabs.Length);
             int posIndex = Random.Range(0, pockets.Length);
-            while (pockets[posIndex].childGo != null)
+
+            while (pockets[posIndex].ChildGo != null || !pockets[posIndex].Check())
             {
                 posIndex = Random.Range(0, pockets.Length);
             }
@@ -53,7 +54,7 @@ public class Block : MonoBehaviour
             //Instantiate에서 부모 객체를 정해버리면 스케일 값까지 적용되기 때문에 생성 뒤 배정
             obstacle.SetPocket(pockets[posIndex]);
             ObstacleManager.Instance.Obstacles.Add(obstacle);
-            pockets[posIndex].childGo = go;
+            pockets[posIndex].ChildGo = go;
             isUsePocketCount++;
         }    
 	}
@@ -71,7 +72,7 @@ public class Block : MonoBehaviour
 				itemRezenInfos[key] = rezenInfo;
 
 				int posIndex = Random.Range(0, pockets.Length);
-				while (pockets[posIndex].childGo != null)
+				while (pockets[posIndex].ChildGo != null)
 				{
 					posIndex = Random.Range(0, pockets.Length);
 				}
@@ -94,10 +95,10 @@ public class Block : MonoBehaviour
 
         void Create(int posIndex, int index)
         {
-			pockets[posIndex].childGo =
+			pockets[posIndex].ChildGo =
 							Instantiate(itemPrefabs[index], pockets[posIndex].transform.position, Quaternion.identity);
 
-			var item = pockets[posIndex].childGo.GetComponent<Item>();
+			var item = pockets[posIndex].ChildGo.GetComponent<Item>();
 			item.SetPocket(pockets[posIndex]);
 			isUsePocketCount++;
 		}
@@ -109,12 +110,12 @@ public class Block : MonoBehaviour
         {
             if (isUsePocketCount >= pockets.Length)
                 return;
-            if (pockets[i].childGo != null)
+            if (pockets[i].ChildGo != null)
                 continue;
 
-            pockets[i].childGo = Instantiate(scoreItem, pockets[i].transform.position, Quaternion.identity);
+            pockets[i].ChildGo = Instantiate(scoreItem, pockets[i].transform.position, Quaternion.identity);
 
-            var scoreItemComp = pockets[i].childGo.GetComponent<ScoreItem>();
+            var scoreItemComp = pockets[i].ChildGo.GetComponent<ScoreItem>();
             ItemManager.Instance.ScoreItems.Add(scoreItemComp);
             scoreItemComp.SetPocket(pockets[i]);
 			scoreItemComp.IsMagnetic = ItemManager.Instance.IsMagnetic;
@@ -126,17 +127,17 @@ public class Block : MonoBehaviour
     {
         foreach (var pocket in pockets)
         {
-            if (pocket.childGo == null)
+            if (pocket.ChildGo == null)
                 continue;
 
-            if (pocket.childGo.CompareTag("Item"))
+            if (pocket.ChildGo.CompareTag("Item"))
             {
-                var item = pocket.childGo.GetComponent<Item>();
+                var item = pocket.ChildGo.GetComponent<Item>();
                 item.OnSmash();
             }
-            else if (pocket.childGo.CompareTag("Obstacle"))
+            else if (pocket.ChildGo.CompareTag("Obstacle"))
             {
-                var obstacle = pocket.childGo.GetComponent<Obstacle>();
+                var obstacle = pocket.ChildGo.GetComponent<Obstacle>();
                 obstacle.OnSmash();
             }
         }

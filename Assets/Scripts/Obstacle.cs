@@ -13,15 +13,14 @@ public class Obstacle : MonoBehaviour
         if (other.CompareTag("Player"))
         {
 			var player = other.GetComponent<Player>();
-            StartCoroutine(player.OnHitEffect());
-			player.OnDamage(damage);
-		}
+            player.OnDamage(damage);
+        }
     }
 
     public void OnSmash()
     {
         ObstacleManager.Instance.Obstacles.Remove(this);
-        ParentPocket.childGo = null;
+        ParentPocket.ChildGo = null;
 		ParentPocket = null;
 		Destroy(gameObject);
 	}
@@ -34,9 +33,9 @@ public class Obstacle : MonoBehaviour
 
 	public void ChangeToSocreItem()
 	{
-		ParentPocket.childGo = Instantiate(ItemManager.Instance.scoreItemPrefab, ParentPocket.transform.position, Quaternion.identity);
+		ParentPocket.ChildGo = Instantiate(ItemManager.Instance.scoreItemPrefab, ParentPocket.transform.position, Quaternion.identity);
 
-		var scoreItemComp = ParentPocket.childGo.GetComponent<ScoreItem>();
+		var scoreItemComp = ParentPocket.ChildGo.GetComponent<ScoreItem>();
 		ItemManager.Instance.ScoreItems.Add(scoreItemComp);
 		scoreItemComp.SetPocket(ParentPocket);
 		scoreItemComp.IsMagnetic = ItemManager.Instance.IsMagnetic;

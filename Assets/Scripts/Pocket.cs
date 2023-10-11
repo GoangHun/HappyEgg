@@ -4,5 +4,11 @@ using UnityEngine;
 
 public class Pocket : MonoBehaviour
 {
-    [HideInInspector]public GameObject childGo = null;
+    public GameObject ChildGo { get; set; } = null;
+    public Pocket[] brothers = new Pocket[2];
+
+    public bool Check()
+    {
+        return brothers[0].ChildGo == null || brothers[1].ChildGo == null;
+    }
 }

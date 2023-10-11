@@ -10,7 +10,7 @@ public class Item : MonoBehaviour, IItem
 
     public void PickUpItem()
 	{
-		ParentPocket.childGo = null;
+		ParentPocket.ChildGo = null;
 		ParentPocket = null;
 		Destroy(gameObject);
 	}
@@ -23,7 +23,7 @@ public class Item : MonoBehaviour, IItem
 
     public void OnSmash()
     {
-        ParentPocket.childGo = null;
+        ParentPocket.ChildGo = null;
         ParentPocket = null;
         Destroy(gameObject);
     }

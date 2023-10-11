@@ -19,12 +19,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public Player player;
+    public float playTime = 180f;
+    private float playTimer;
     public int Score { get; private set; } = 0;
-    public float Timer { get; private set; } = 180f;
     public bool IsGameover { get; private set; }
     public bool IsPause { get; private set; }
-    public Player Player { get; set; }
-
     public Dictionary<int, int> StageInfo { get; private set; } = new Dictionary<int, int>(); //스테이지 넘버, 장애물 생성 개수
     public int CurrentStageNum { get; private set; } = 1;
 
@@ -44,16 +44,18 @@ public class GameManager : MonoBehaviour
         {
             StageInfo.Add(i, obstacleTable.GetObstacleCount(i));
         }
+
+        playTimer = playTime;
     }
 
 	private void Update()
 	{
 		if (!IsGameover)
         {
-            Timer -= Time.deltaTime;
-            UIManager.Instance.UpdateTimerProgress(Timer / 180f);
+            playTimer -= Time.deltaTime;
+            UIManager.Instance.UpdateTimerProgress(playTimer / playTime);
 
-            if (Timer < 0)
+            if (playTimer < 0)
             {
                 EndGame();
             }
@@ -72,7 +74,6 @@ public class GameManager : MonoBehaviour
 		if (!IsGameover)
 		{
 			Score += score;
-            Debug.Log("Score: " + Score);
 		}
 	}
 
@@ -80,8 +81,8 @@ public class GameManager : MonoBehaviour
     {
         if (!IsGameover)
         {
-            Timer += time;
-            Timer = Timer > 180f ? 180f : Timer;
+            playTimer += time;
+            playTimer = playTimer > playTime ? playTime : playTimer;
         }
     }
 

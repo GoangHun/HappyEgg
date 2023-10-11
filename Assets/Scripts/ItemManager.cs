@@ -9,12 +9,6 @@ public struct RezenInfo
     public float lastRezenTime;
 }
 
-public class RezenElement
-{
-    public string ID { get; set; }
-    public float RezenDuration { get; set; }
-}
-
 public class ItemManager : MonoBehaviour
 {
     private static ItemManager instance;

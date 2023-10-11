@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     public float shootingSpeedUpTime = 5f;
 
     public bool IsMagnetic { get; set; } = false;
+    public bool IsHitEffect { get; private set; } = false;
 
     private float lastShootingTime = 0f;
     private new SkinnedMeshRenderer renderer;
@@ -29,14 +30,13 @@ public class Player : MonoBehaviour
 
 	private void Start()
 	{
-		GameManager.Instance.Player = this;
         lastShootingTime = -shootingCoolTime;
         SetBroom();
 	}
 
 	private void Update()
 	{
-        if (playerInput.DoubleClick && lastShootingTime + shootingCoolTime < Time.time)
+        if (playerInput.DoubleClick || Input.GetKeyDown(KeyCode.Space) && lastShootingTime + shootingCoolTime < Time.time)
         {
             lastShootingTime = Time.time;
 			for (int i = 0; i < currentShootingItem.Count; i++)
@@ -64,10 +64,13 @@ public class Player : MonoBehaviour
 	public void OnDamage(float damage)
     {
         GameManager.Instance.SetTimer(-damage);
+        if (!IsHitEffect)
+            StartCoroutine(OnHitEffect());
     }
 
     public IEnumerator OnHitEffect()
     {
+        IsHitEffect = true;
         float time = Time.time + hitEffectTime;
         var color = renderer.material.color;
         while (time > Time.time)
@@ -81,7 +84,9 @@ public class Player : MonoBehaviour
             renderer.material.color = color;
 
             yield return new WaitForSeconds(0.1f);
+            Debug.Log(time > Time.time);
         }
+        IsHitEffect = false;
     }
 
     public void SetToyHammer()

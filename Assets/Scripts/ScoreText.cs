@@ -25,7 +25,7 @@ public class ScoreText : MonoBehaviour
             //매 프레임마다 1씩 증가시킴
             if (currentScore < GameManager.Instance.Score)
             {
-                currentScore += 1;
+                currentScore += 100;
                 UpdateScoreText();
             }
         }

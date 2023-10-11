@@ -30,7 +30,7 @@ public class Hen : Item
 	{
 		if (isRush)
 			return;
-        ParentPocket.childGo = null;
+        ParentPocket.ChildGo = null;
 		ParentPocket = null;
 		transform.parent = ItemManager.Instance.conveyor.transform;
 		animator.SetTrigger("isFly");

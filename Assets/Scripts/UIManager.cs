@@ -28,7 +28,6 @@ public class UIManager : MonoBehaviour
 	public GameObject pausePanel;
 	public GameObject countTextGO;
 	public float countTime = 3f;
-	public float shootingTimer = 30f;
 
 
 	private void Awake()

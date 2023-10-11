@@ -47,12 +47,12 @@ public class PlayerMovement : MonoBehaviour {
 
 
 			//test code
-			if (Input.GetKeyDown(KeyCode.LeftArrow))
+			if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
 			{
 				--currentTransIndex;
 				currentTransIndex = currentTransIndex < 0 ? 0 : currentTransIndex;
 			}
-			if (Input.GetKeyDown(KeyCode.RightArrow))
+			if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
 			{
 				++currentTransIndex;
 				currentTransIndex = currentTransIndex > 2 ? 2 : currentTransIndex;

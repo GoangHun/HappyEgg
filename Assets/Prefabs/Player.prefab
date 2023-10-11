@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: -6.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6522071633291205832}
@@ -134,9 +134,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e570bd0c367d1f04fad99648c18fcf5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShootingItemPocket: {fileID: 0}
+  conveyor: {fileID: 0}
+  shootingEffect: {fileID: 0}
   hitEffectTime: 1
   shootingCoolTime: 30
+  shootingSpeed: 20
+  shootingSpeedUpTime: 5
 --- !u!1001 &8592772023755092819
 PrefabInstance:
   m_ObjectHideFlags: 0

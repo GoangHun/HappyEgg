@@ -39,10 +39,7 @@ public class ScoreItem : Item
 
     public void Move()
 	{
-        if (transform.parent != ItemManager.Instance.conveyor.transform)
-            transform.parent = ItemManager.Instance.conveyor.transform;
-
-        var dir = GameManager.Instance.Player.transform.position - transform.position;
+        var dir = GameManager.Instance.player.transform.position - transform.position;
         dir.Normalize();
 		transform.position += dir * speed * Time.fixedDeltaTime;
 	}
