@@ -8,7 +8,7 @@ public class RushCollider : MonoBehaviour
 	{
 		if (other.CompareTag("Obstacle"))
 		{
-			other.GetComponent<Obstacle>().OnSmash();
+			other.GetComponent<Obstacle>().ChangeToSocreItem();
 			//보석생성
 		}
 	}

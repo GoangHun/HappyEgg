@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -11,7 +12,8 @@ public class Block : MonoBehaviour
     private GameObject scoreItem;
     private GameObject[] itemPrefabs;
     private Dictionary<string, RezenInfo> itemRezenInfos;
-    private Pocket[] pockets;
+	private List<string> keys;
+	private Pocket[] pockets;
     private int isUsePocketCount = 0;
 
     //오브젝트풀 사용 여부 보류
@@ -25,12 +27,13 @@ public class Block : MonoBehaviour
 
     private void Start()
     {
-        scoreItem = ItemManager.Instance.scoreItemPrefabs;
+        scoreItem = ItemManager.Instance.scoreItemPrefab;
         itemPrefabs = ItemManager.Instance.itemPrefabs;
         itemRezenInfos = ItemManager.Instance.itemRezenInfos;
-    }
+		keys = new List<string>(itemRezenInfos.Keys);
+	}
 
-    public void CreateObstacles()
+	public void CreateObstacles()
     {
         GameManager.Instance.StageInfo.TryGetValue(GameManager.Instance.CurrentStageNum, out int num);
         for (int i = 0; i < num; i++)
@@ -57,32 +60,51 @@ public class Block : MonoBehaviour
 
 	public void CreateItems()
     {
-        for (int i = 0; i < itemPrefabs.Length; i++)
+		for (int i = 0; i < keys.Count; i++)
         {
-            var rezenInfo = itemRezenInfos[itemPrefabs[i].name];
+			var key = keys[i];
+			var rezenInfo = itemRezenInfos[key];
 
-            if (rezenInfo.lastRezenTime + rezenInfo.rezenDuration < Time.time)
-            {
-                rezenInfo.lastRezenTime = Time.time;
-                itemRezenInfos[itemPrefabs[i].name] = rezenInfo;
+			if (rezenInfo.lastRezenTime + rezenInfo.rezenDuration < Time.time)
+			{
+				rezenInfo.lastRezenTime = Time.time;
+				itemRezenInfos[key] = rezenInfo;
 
-                int posIndex = Random.Range(0, pockets.Length);
-                while (pockets[posIndex].childGo != null)
-                {
-                    posIndex = Random.Range(0, pockets.Length);
-                }
-                pockets[posIndex].childGo = Instantiate(itemPrefabs[i], pockets[posIndex].transform.position, Quaternion.identity);
+				int posIndex = Random.Range(0, pockets.Length);
+				while (pockets[posIndex].childGo != null)
+				{
+					posIndex = Random.Range(0, pockets.Length);
+				}
 
-                var item = pockets[posIndex].childGo.GetComponent<Item>();
-                item.SetPocket(pockets[posIndex]);
-                isUsePocketCount++;
-            }
-        }
+				switch (key)
+				{
+					case "Hourglass":
+						Create(posIndex, 0);
+						break;
+
+					case "Magnet&Hen":
+						int index = Random.Range(1, 3);
+						Create(posIndex, index);
+						break;
+
+					default: break;
+				}
+			}
+		}
+
+        void Create(int posIndex, int index)
+        {
+			pockets[posIndex].childGo =
+							Instantiate(itemPrefabs[index], pockets[posIndex].transform.position, Quaternion.identity);
+
+			var item = pockets[posIndex].childGo.GetComponent<Item>();
+			item.SetPocket(pockets[posIndex]);
+			isUsePocketCount++;
+		}
 	}
 
     public void CreateSocreItems()
     {
-
         for (int i = 0; i < pockets.Length; i++)
         {
             if (isUsePocketCount >= pockets.Length)
@@ -95,7 +117,7 @@ public class Block : MonoBehaviour
             var scoreItemComp = pockets[i].childGo.GetComponent<ScoreItem>();
             ItemManager.Instance.ScoreItems.Add(scoreItemComp);
             scoreItemComp.SetPocket(pockets[i]);
-            scoreItemComp.IsMagnetic = ItemManager.Instance.IsMagnetic;
+			scoreItemComp.IsMagnetic = ItemManager.Instance.IsMagnetic;
             isUsePocketCount++;
         }
     }
@@ -120,4 +142,5 @@ public class Block : MonoBehaviour
         }
         isUsePocketCount = 0;
     }
+
 }

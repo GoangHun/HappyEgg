@@ -34,10 +34,11 @@ public class ItemManager : MonoBehaviour
     public List<ScoreItem> ScoreItems { get; set; } = new List<ScoreItem>();
 
     public Dictionary<string, RezenInfo> itemRezenInfos = new Dictionary<string, RezenInfo>();
-
-    public GameObject scoreItemPrefabs;
+    public Conveyor conveyor;
+    public GameObject scoreItemPrefab;
     public GameObject[] itemPrefabs;    //리젠 우선 순위(1위, 2위...) 
 	public GameObject[] shootingItems;
+    public string[] rezenTableId;
 
 
 	private void Awake()
@@ -52,11 +53,11 @@ public class ItemManager : MonoBehaviour
         }
 
         //데이터테이블에서 itemRezenInfos 읽어오기
-        foreach (var item in itemPrefabs)
+        foreach (var id in rezenTableId)
         {
-            var rezenDuration = DataTableMgr.GetTable<RezenTable>().GetRezenDuration(item.name);
+            var rezenDuration = DataTableMgr.GetTable<RezenTable>().GetRezenDuration(id);
             RezenInfo info = new RezenInfo { rezenDuration = rezenDuration, lastRezenTime = 0f };
-            itemRezenInfos.Add(item.name, info);
+            itemRezenInfos.Add(id, info);
         }
     }
 

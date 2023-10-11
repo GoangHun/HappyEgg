@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class Hen : Item
 {
@@ -9,9 +10,15 @@ public class Hen : Item
 	public float durationTime = 3f;
 	public float speed = 7f;
 
-	protected bool isRush = false;
-	
-	public void OnTriggerEnter(Collider other)
+	private Animator animator;
+	private bool isRush;
+
+	private void Awake()
+	{
+		animator = GetComponent<Animator>();
+	}
+
+	private void OnTriggerEnter(Collider other)
 	{
 		if (other.CompareTag("Player"))
 		{
@@ -21,20 +28,24 @@ public class Hen : Item
 
 	public void PickUpItem()
 	{
-		ParentPocket.childGo = null;
+		if (isRush)
+			return;
+        ParentPocket.childGo = null;
 		ParentPocket = null;
-		isRush = true;
+		transform.parent = ItemManager.Instance.conveyor.transform;
+		animator.SetTrigger("isFly");
 		StartCoroutine(RushCoroutine());
 	}
 
 	private IEnumerator RushCoroutine()
 	{
+		isRush = true;
 		rushCollider.enabled = true;
-		while (true)
+		float startTime = Time.time;
+		while (startTime + durationTime > Time.time)
 		{
 			transform.position += transform.forward * speed * Time.deltaTime;
-			yield return new WaitForSeconds(durationTime);
-			break;
+			yield return null;
 		}
 		rushCollider.enabled = false;
 		Destroy(gameObject);

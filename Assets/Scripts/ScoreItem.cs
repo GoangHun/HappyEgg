@@ -39,8 +39,8 @@ public class ScoreItem : Item
 
     public void Move()
 	{
-        if (transform.parent != null)
-            transform.parent = null;
+        if (transform.parent != ItemManager.Instance.conveyor.transform)
+            transform.parent = ItemManager.Instance.conveyor.transform;
 
         var dir = GameManager.Instance.Player.transform.position - transform.position;
         dir.Normalize();

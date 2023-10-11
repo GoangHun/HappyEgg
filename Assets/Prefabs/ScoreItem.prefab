@@ -151,6 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 10
   speed: 20
+  blockTransform: {fileID: 0}
 --- !u!95 &7259407799888699926
 Animator:
   serializedVersion: 5

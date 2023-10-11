@@ -17,11 +17,12 @@ public class Conveyor : MonoBehaviour
 
 	public void OnTriggerExit(Collider collision)
 	{
-		var target = collision.GetComponent<Block>();
 		if (collision.CompareTag("Block"))
 		{
+			var target = collision.GetComponent<Block>();
 			var pos = new Vector3(0, 0, blockHeight * blocks.Length);
 			target.transform.position += pos;
+			//Debug.Log("블럭 이동", collision.gameObject);
 			target.Clear();
             target.CreateItems();
             target.CreateObstacles();

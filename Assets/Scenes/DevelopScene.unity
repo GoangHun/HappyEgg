@@ -1069,7 +1069,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 1.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1108,7 +1108,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -1448,7 +1448,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.42261827, y: 0, z: 0, w: 0.9063079}
-  m_LocalPosition: {x: 0, y: 7.78, z: -10.14}
+  m_LocalPosition: {x: 0, y: 14, z: -12.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1575,7 +1575,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cac638fba0be7343ba6c57a2bb6b1c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreItemPrefabs: {fileID: 6858522305033648612, guid: 64e66c563af634147ad51ba19cac9170,
+  conveyor: {fileID: 1196857126}
+  scoreItemPrefab: {fileID: 6858522305033648612, guid: 64e66c563af634147ad51ba19cac9170,
     type: 3}
   itemPrefabs:
   - {fileID: 4512771827594558048, guid: 48d131254b30632448784246f3593758, type: 3}
@@ -1586,6 +1587,9 @@ MonoBehaviour:
   - {fileID: 1781246113}
   - {fileID: 1187410505}
   - {fileID: 1571803700}
+  rezenTableId:
+  - Hourglass
+  - Magnet&Hen
 --- !u!114 &1022174638
 MonoBehaviour:
   m_ObjectHideFlags: 0

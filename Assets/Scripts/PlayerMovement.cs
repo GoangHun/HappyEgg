@@ -44,6 +44,19 @@ public class PlayerMovement : MonoBehaviour {
 					currentTransIndex = currentTransIndex < 0 ? 0 : currentTransIndex;
 				}
 			}
+
+
+			//test code
+			if (Input.GetKeyDown(KeyCode.LeftArrow))
+			{
+				--currentTransIndex;
+				currentTransIndex = currentTransIndex < 0 ? 0 : currentTransIndex;
+			}
+			if (Input.GetKeyDown(KeyCode.RightArrow))
+			{
+				++currentTransIndex;
+				currentTransIndex = currentTransIndex > 2 ? 2 : currentTransIndex;
+			}
 		}
 	}
 
