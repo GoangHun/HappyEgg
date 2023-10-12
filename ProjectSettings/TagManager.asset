@@ -41,6 +41,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 3408613223
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: TMPshadow
+    uniqueID: 3413194087
+    locked: 0
+  - name: TMP
+    uniqueID: 2903816907
     locked: 0
