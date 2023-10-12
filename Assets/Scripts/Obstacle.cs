@@ -4,18 +4,8 @@ using System.Net.Sockets;
 using UnityEngine;
 
 public class Obstacle : MonoBehaviour
-{
-	public float damage = 10f;
+{	
 	public Pocket ParentPocket { get; private set; } = null;
-
-	public void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-			var player = other.GetComponent<Player>();
-            player.OnDamage(damage);
-        }
-    }
 
     public void OnSmash()
     {

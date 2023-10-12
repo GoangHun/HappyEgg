@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     public bool IsGameover { get; private set; }
     public bool IsPause { get; private set; }
     public Dictionary<int, int> StageInfo { get; private set; } = new Dictionary<int, int>(); //스테이지 넘버, 장애물 생성 개수
-    public int CurrentStageNum { get; private set; } = 1;
+    public int CurrentStageNum { get; set; } = 1;
 
     private void Awake()
 	{

@@ -5,14 +5,19 @@ using UnityEngine;
 public class Conveyor : MonoBehaviour
 {
 	public float speed = 0f;
-
 	public Block[] blocks;
+	public Player player;
 
+	private float defaultSpeed;
 	private float blockHeight;
+	private Coroutine speedBuffCoroutine;
+	private Coroutine speedDebuffCoroutine; // 현재 실행 중인 코루틴을 저장할 변수
+
 
 	private void Awake()
 	{
 		blockHeight = blocks[0].transform.localScale.z;
+		defaultSpeed = speed;
 	}
 
 	public void OnTriggerExit(Collider collision)
@@ -38,17 +43,46 @@ public class Conveyor : MonoBehaviour
 		}
 	}
 
-	public void SpeedUpBuff(float speed, float time)
+	public void SpeedBuff(float speed, float time)
 	{
-		StartCoroutine(SpeedUpCoroutine(speed, time));
+		if (speedDebuffCoroutine != null)
+		{
+			StopCoroutine(speedDebuffCoroutine);
+			speedDebuffCoroutine = null;
+		}	
+		if (speedBuffCoroutine != null)
+			StopCoroutine(speedBuffCoroutine); 
+		speedBuffCoroutine = StartCoroutine(SpeedBuffCoroutine(speed, time)); 
 	}
-
-	private IEnumerator SpeedUpCoroutine(float speed, float time)
+	private IEnumerator SpeedBuffCoroutine(float speed, float time)
 	{
 		this.speed = speed;
 		yield return new WaitForSeconds(time);
-		this.speed = 12f;
+		this.speed = defaultSpeed;
+		speedBuffCoroutine = null;
 	}
 
+	public void SpeedDeBuff(float speed, float time)
+	{
+		if (speedBuffCoroutine != null)
+			return;
+
+		if (speedDebuffCoroutine != null)
+		{
+			StopCoroutine(speedDebuffCoroutine);
+			Debug.Log("스탑 코루틴");
+		}
+
+		speedDebuffCoroutine = StartCoroutine(SpeedDeBuffCoroutine(speed, time));
+	}
+	private IEnumerator SpeedDeBuffCoroutine(float speed, float time)
+	{
+		Debug.Log("디버프 코루틴 시작");
+		this.speed = speed;
+		yield return new WaitForSeconds(time);
+		this.speed = defaultSpeed;
+		speedDebuffCoroutine = null;
+		Debug.Log("디버프 종료");
+	}
 
 }

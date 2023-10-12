@@ -18,8 +18,9 @@ public class ObstacleManager : MonoBehaviour
     }
 
     public List<Obstacle> Obstacles { get; set; } = new List<Obstacle>();
+	public GameObject[] obstaclePrefabs;
 
-    private void Awake()
+	private void Awake()
     {
         if (instance != null)
         {

@@ -7,6 +7,9 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 public class Hen : Item
 {
 	public Collider rushCollider;
+	public ParticleSystem rushEffect;
+	public ParticleSystem destroyEffect;
+
 	public float durationTime = 3f;
 	public float speed = 7f;
 
@@ -35,6 +38,7 @@ public class Hen : Item
 		transform.parent = ItemManager.Instance.conveyor.transform;
 		animator.SetTrigger("isFly");
 		StartCoroutine(RushCoroutine());
+		rushEffect.Play();
 	}
 
 	private IEnumerator RushCoroutine()
@@ -48,6 +52,11 @@ public class Hen : Item
 			yield return null;
 		}
 		rushCollider.enabled = false;
+
+		var effect = Instantiate(destroyEffect, transform.position, Quaternion.identity);
+		effect.Play();
+		Destroy(effect, 3f);
+
 		Destroy(gameObject);
 	}
 }

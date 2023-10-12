@@ -315,7 +315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstaclePrefabs:
-  - {fileID: 8039872794254532310, guid: 7bcc2885e9f67024cb141a1aa65e517f, type: 3}
+  - {fileID: 0}
 --- !u!1 &3327568353662408678
 GameObject:
   m_ObjectHideFlags: 0

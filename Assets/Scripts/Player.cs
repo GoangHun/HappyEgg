@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -16,9 +17,10 @@ public class Player : MonoBehaviour
 
     public bool IsMagnetic { get; set; } = false;
     public bool IsHitEffect { get; private set; } = false;
+    public bool IsShootingBuff { get; set; } = false;
 
     private float lastShootingTime = 0f;
-    private new SkinnedMeshRenderer renderer;
+	private new SkinnedMeshRenderer renderer;   //Component.renderer랑 이름이 같아서 new사용
     private PlayerInput playerInput;
     private List<ShootingItem> currentShootingItem = new List<ShootingItem>();
 
@@ -44,7 +46,7 @@ public class Player : MonoBehaviour
                 currentShootingItem[i].gameObject.SetActive(true);
 				currentShootingItem[i].Action();
                 shootingEffect.Play();
-                conveyor.SpeedUpBuff(shootingSpeed, shootingSpeedUpTime);
+				SpeedBuff(shootingSpeed, shootingSpeedUpTime);
 			}   
         }
 
@@ -60,14 +62,12 @@ public class Player : MonoBehaviour
         }
     }
 
-
 	public void OnDamage(float damage)
     {
         GameManager.Instance.SetTimer(-damage);
         if (!IsHitEffect)
             StartCoroutine(OnHitEffect());
     }
-
     public IEnumerator OnHitEffect()
     {
         IsHitEffect = true;
@@ -88,8 +88,9 @@ public class Player : MonoBehaviour
         }
         IsHitEffect = false;
     }
+	
 
-    public void SetToyHammer()
+	public void SetToyHammer()
     {
         currentShootingItem.Clear();
 		currentShootingItem.Add(ItemManager.Instance.shootingItems[0].GetComponent<ToyHammer>());
@@ -106,6 +107,15 @@ public class Player : MonoBehaviour
 		currentShootingItem.Clear();
 		currentShootingItem.Add(ItemManager.Instance.shootingItems[2].GetComponent<Broom>());
 		currentShootingItem.Add(ItemManager.Instance.shootingItems[3].GetComponent<Broom>());
+	}
+
+    public void SpeedBuff(float speed, float time)
+    {
+		conveyor.SpeedBuff(speed, time);
+    }
+	public void SpeedDeBuff(float speed, float time)
+	{
+		conveyor.SpeedDeBuff(speed, time);
 	}
 
 }

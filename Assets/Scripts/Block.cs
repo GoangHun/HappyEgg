@@ -7,8 +7,7 @@ using UnityEngine;
 
 public class Block : MonoBehaviour
 {
-    public GameObject[] obstaclePrefabs;
-
+    private GameObject[] obstaclePrefabs;
     private GameObject scoreItem;
     private GameObject[] itemPrefabs;
     private Dictionary<string, RezenInfo> itemRezenInfos;
@@ -31,21 +30,26 @@ public class Block : MonoBehaviour
         itemPrefabs = ItemManager.Instance.itemPrefabs;
         itemRezenInfos = ItemManager.Instance.itemRezenInfos;
 		keys = new List<string>(itemRezenInfos.Keys);
+		obstaclePrefabs = ObstacleManager.Instance.obstaclePrefabs;
 	}
 
 	public void CreateObstacles()
     {
-        GameManager.Instance.StageInfo.TryGetValue(GameManager.Instance.CurrentStageNum, out int num);
+		
+		GameManager.Instance.StageInfo.TryGetValue(GameManager.Instance.CurrentStageNum, out int num);
         for (int i = 0; i < num; i++)
         {
-            if (isUsePocketCount >= pockets.Length)
+			Debug.Log("CreateObstacles for");
+			if (isUsePocketCount >= pockets.Length)
                 return;
             int obstacleIndex = Random.Range(0, obstaclePrefabs.Length);
             int posIndex = Random.Range(0, pockets.Length);
 
+            
             while (pockets[posIndex].ChildGo != null || !pockets[posIndex].Check())
             {
-                posIndex = Random.Range(0, pockets.Length);
+				Debug.Log("CreateObstacles while");
+				posIndex = Random.Range(0, pockets.Length);
             }
 
             var go = Instantiate(obstaclePrefabs[obstacleIndex], pockets[posIndex].transform.position, Quaternion.identity);
@@ -61,6 +65,8 @@ public class Block : MonoBehaviour
 
 	public void CreateItems()
     {
+		Debug.Log("CreateItems");
+
 		for (int i = 0; i < keys.Count; i++)
         {
 			var key = keys[i];
@@ -106,7 +112,9 @@ public class Block : MonoBehaviour
 
     public void CreateSocreItems()
     {
-        for (int i = 0; i < pockets.Length; i++)
+		Debug.Log("CreateSocreItems");
+
+		for (int i = 0; i < pockets.Length; i++)
         {
             if (isUsePocketCount >= pockets.Length)
                 return;
@@ -142,6 +150,11 @@ public class Block : MonoBehaviour
             }
         }
         isUsePocketCount = 0;
+    }
+
+    public void SetObject()
+    {
+
     }
 
 }
