@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6761784450738859856}
   - component: {fileID: 8163840805957137469}
+  - component: {fileID: 2788815864459009450}
   m_Layer: 0
   m_Name: Pop up Green
   m_TagString: Untagged
@@ -89,6 +90,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!210 &2788815864459009450
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3325555670569593224}
+  m_Enabled: 1
+  m_SortingLayerID: -886354073
+  m_SortingLayer: -1
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &4602720010804466290
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,6 +113,7 @@ GameObject:
   - component: {fileID: 1383360964338310680}
   - component: {fileID: 428853012819153861}
   - component: {fileID: 557968734275577194}
+  - component: {fileID: 6385614252107873750}
   m_Layer: 5
   m_Name: Text (TMP) (1)
   m_TagString: Untagged
@@ -224,6 +238,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!210 &6385614252107873750
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4602720010804466290}
+  m_Enabled: 1
+  m_SortingLayerID: -1391150389
+  m_SortingLayer: 2
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &7002795632248727772
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,6 +429,7 @@ GameObject:
   - component: {fileID: 7518232068718519852}
   - component: {fileID: 8439484286609110718}
   - component: {fileID: 6331226165359103990}
+  - component: {fileID: 4542896613366942833}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -527,6 +554,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!210 &4542896613366942833
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8536054807769279934}
+  m_Enabled: 1
+  m_SortingLayerID: -881773209
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &8860000252741455206
 GameObject:
   m_ObjectHideFlags: 0

@@ -521,6 +521,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShootSelect
       objectReference: {fileID: 0}
+    - target: {fileID: 6567122739896077336, guid: 999cf5deb9b89d849b7f7a1951272f2d,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567122739896077336, guid: 999cf5deb9b89d849b7f7a1951272f2d,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -886354073
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -776,7 +786,7 @@ PrefabInstance:
     - target: {fileID: 4902288710778454711, guid: c5ac047efef0d304f9775bf44bce7d25,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -6.2999954
+      value: -6.300003
       objectReference: {fileID: 0}
     - target: {fileID: 5537600732473687599, guid: c5ac047efef0d304f9775bf44bce7d25,
         type: 3}
@@ -801,7 +811,7 @@ PrefabInstance:
     - target: {fileID: 7532697865832927051, guid: c5ac047efef0d304f9775bf44bce7d25,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -6.2999954
+      value: -6.300003
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
