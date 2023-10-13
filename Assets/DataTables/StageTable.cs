@@ -7,28 +7,37 @@ using System.IO;
 using UnityEngine;
 using System;
 
-public class StageTable : DataTable
+public struct LineInfo
 {
-	public int StageNum { get; set; }
+	public int Left { get; set; }
+	public int Middle { get; set; }
+	public int Right { get; set; }
 
-	public struct LineInfo
+	public LineInfo(int left, int middle, int right)
 	{
-		public int Left { get; set; } 
-		public int Middle { get; set; }
-		public int Right { get; set; }
+		Left = left;
+		Middle = middle;
+		Right = right;
 	}
+}
+public class StageTable : DataTable
+{	
 	public class Data
 	{
 		public int ID { get; set; }
-		public LineInfo LineInfo { get; set; }
+		public int Left { get; set; }
+		public int Middle { get; set; }
+		public int Right { get; set; }
 	}
 
 	protected Dictionary<int, LineInfo> dic = new Dictionary<int, LineInfo>();
-	public StageTable()
+
+	public StageTable(string num)
 	{
-		path = "Tables/StageTable" + StageNum;
+		path = "Tables/StageTable" + num;
 		Load();
 	}
+
 	public override void Load()
 	{
 		var csvStr = Resources.Load<TextAsset>(path);   //path확장자를 지워줘야 함. Resources폴더에 저장
@@ -41,11 +50,12 @@ public class StageTable : DataTable
 
 		foreach (var record in records)
 		{
-			dic.Add(record.ID, record.LineInfo);
+			LineInfo info = new LineInfo(record.Left, record.Middle, record.Right);
+			dic.Add(record.ID, info);
 		}
 	}
 
-	public LineInfo GetLineInfo(int id)
+	public LineInfo GetLine(int id)
 	{
 		if (!dic.ContainsKey(id))
 		{
@@ -54,4 +64,8 @@ public class StageTable : DataTable
 		return dic[id];
 	}
 
+	public int Count()
+	{
+		return dic.Count;
+	}
 }

@@ -2,24 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum TableType
+{
+    ObstacleTable = 0,
+    RezenTable,
+    Stage1,
+    Stage2,
+    Stage3,
+    Stage4,
+    Stage5,
+}
+
 public static class DataTableMgr
 {
     //Key로 System.Type을 사용
-    private static Dictionary<System.Type, DataTable> tables = new Dictionary<System.Type, DataTable>();
+    private static Dictionary<TableType, DataTable> tables = new Dictionary<TableType, DataTable>();
 
     static DataTableMgr()
     {
         tables.Clear();
 
-        var rezenTable = new RezenTable();
-        tables.Add(typeof(RezenTable), rezenTable);
-        var obstacleTable = new ObstacleTable();
-        tables.Add(typeof(ObstacleTable), obstacleTable);
+		var obstacleTable = new ObstacleTable();
+		tables.Add(TableType.ObstacleTable, obstacleTable);
+		var rezenTable = new RezenTable();
+        tables.Add(TableType.RezenTable, rezenTable);
+        var stageTable = new StageTable("1");
+        tables.Add(TableType.Stage1, stageTable);
+       
     }
 
-    public static T GetTable<T>() where T : DataTable
+    public static T GetTable<T>(TableType type) where T : DataTable
     {
-        var id = typeof(T);
+        var id = type;
         if (!tables.ContainsKey(id))
         {
             return null;

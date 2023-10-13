@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.Collections.AllocatorManager;
 
 public class Conveyor : MonoBehaviour
 {
 	public float speed = 0f;
-	public Block[] blocks;
+	public List<Block> blocks = new List<Block>();
+	public Block lastBlock;
 	public Player player;
 
 	private float defaultSpeed;
@@ -24,14 +26,37 @@ public class Conveyor : MonoBehaviour
 	{
 		if (collision.CompareTag("Block"))
 		{
+			
 			var target = collision.GetComponent<Block>();
-			var pos = new Vector3(0, 0, blockHeight * blocks.Length);
+
+			if (SpawnManager.Instance.IsEnd)
+			{
+				if (!lastBlock.gameObject.activeSelf)
+				{
+					lastBlock.gameObject.SetActive(true);   //4번째 블럭 위치에 배치해 놓고 비활성화 시켜놓음
+					blocks.Add(lastBlock);
+				}
+				//target.Clear();
+				return;
+			}
+
+			var pos = new Vector3(0, 0, blockHeight * blocks.Count);
 			target.transform.position += pos;
-			//Debug.Log("블럭 이동", collision.gameObject);
-			target.Clear();
-            target.CreateItems();
-            target.CreateObstacles();
-			target.CreateSocreItems();
+
+			if (GameManager.Instance.currentStage == Stage.None)
+				return;
+			else if (GameManager.Instance.currentStage == Stage.Challenge)
+			{
+				target.Clear();
+				target.CreateItems();
+				target.CreateObstacles();
+				target.CreateSocreItems();
+			}
+			else
+			{
+				target.Clear();
+				target.SetObject();
+			}
         }
 	}
 
@@ -70,19 +95,16 @@ public class Conveyor : MonoBehaviour
 		if (speedDebuffCoroutine != null)
 		{
 			StopCoroutine(speedDebuffCoroutine);
-			Debug.Log("스탑 코루틴");
 		}
 
 		speedDebuffCoroutine = StartCoroutine(SpeedDeBuffCoroutine(speed, time));
 	}
 	private IEnumerator SpeedDeBuffCoroutine(float speed, float time)
 	{
-		Debug.Log("디버프 코루틴 시작");
 		this.speed = speed;
 		yield return new WaitForSeconds(time);
 		this.speed = defaultSpeed;
 		speedDebuffCoroutine = null;
-		Debug.Log("디버프 종료");
 	}
 
 }

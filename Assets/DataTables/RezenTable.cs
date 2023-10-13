@@ -27,7 +27,7 @@ public class RezenTable : DataTable
 
         TextReader reader = new StringReader(csvStr.text);
 
-        var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture));
+		var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture));
         var records = csv.GetRecords<Data>();
 
         foreach (var record in records)

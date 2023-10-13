@@ -1,28 +1,21 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Xml;
-using Unity.VisualScripting;
 using UnityEngine;
 
 
 public class Block : MonoBehaviour
 {
-    private GameObject[] obstaclePrefabs;
+	public Pocket[] pockets;
+
+	private GameObject[] obstaclePrefabs;
     private GameObject scoreItem;
     private GameObject[] itemPrefabs;
     private Dictionary<string, RezenInfo> itemRezenInfos;
 	private List<string> keys;
-	private Pocket[] pockets;
     private int isUsePocketCount = 0;
 
     //오브젝트풀 사용 여부 보류
     //public ObjectPool<GameObject> obstaclePool;
     //public ObjectPool<GameObject> itemPool;
-
-    private void Awake()
-    {
-        pockets = GetComponentsInChildren<Pocket>();
-    }
 
     private void Start()
     {
@@ -36,10 +29,9 @@ public class Block : MonoBehaviour
 	public void CreateObstacles()
     {
 		
-		GameManager.Instance.StageInfo.TryGetValue(GameManager.Instance.CurrentStageNum, out int num);
+		GameManager.Instance.StageInfo.TryGetValue(GameManager.Instance.RandomStageLevel, out int num);
         for (int i = 0; i < num; i++)
         {
-			Debug.Log("CreateObstacles for");
 			if (isUsePocketCount >= pockets.Length)
                 return;
             int obstacleIndex = Random.Range(0, obstaclePrefabs.Length);
@@ -48,7 +40,6 @@ public class Block : MonoBehaviour
             
             while (pockets[posIndex].ChildGo != null || !pockets[posIndex].Check())
             {
-				Debug.Log("CreateObstacles while");
 				posIndex = Random.Range(0, pockets.Length);
             }
 
@@ -154,7 +145,62 @@ public class Block : MonoBehaviour
 
     public void SetObject()
     {
+        for (int i = 0; i < 3; i++)
+        {
+            var line = SpawnManager.Instance.ReadLine();
+            var pref = new GameObject[3];
+            pref[0] = ConvertToGameObject(line.Left);
+            pref[1] = ConvertToGameObject(line.Middle);
+            pref[2] = ConvertToGameObject(line.Right);
 
+			for (int j = 0; j < 3; j++)
+            {
+                if (pref[j] == null)
+                    continue;
+
+				int index = i * 3 + j;
+                var go = Instantiate(pref[j], pockets[index].transform.position, Quaternion.identity);
+                Debug.Log(index);
+				pockets[index].ChildGo = go;
+
+				if (go.CompareTag("Item"))
+                {
+                    var item = go.GetComponent<Item>();
+					item.SetPocket(pockets[index]);
+					isUsePocketCount++;
+
+				}
+                else if (pockets[index].ChildGo.CompareTag("Obstacle"))
+                {
+					var obstacle = go.GetComponent<Obstacle>();
+					obstacle.SetPocket(pockets[index]);
+					isUsePocketCount++;
+				}
+                else
+                {
+					var scoreItem = go.GetComponent<ScoreItem>();
+					scoreItem.SetPocket(pockets[index]);
+					isUsePocketCount++;
+				}
+			}
+		}
+	}
+
+    private GameObject ConvertToGameObject(int code)
+    {
+        int category = code / 10;
+        int entity = code % 10;
+
+		switch (category) 
+        {
+            case 0:
+                return itemPrefabs[entity];
+            case 1:
+                return obstaclePrefabs[entity];
+            case 2:
+                return scoreItem;
+            default: return null;
+        }   
     }
 
 }

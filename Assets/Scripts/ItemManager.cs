@@ -49,7 +49,7 @@ public class ItemManager : MonoBehaviour
         //데이터테이블에서 itemRezenInfos 읽어오기
         foreach (var id in rezenTableId)
         {
-            var rezenDuration = DataTableMgr.GetTable<RezenTable>().GetRezenDuration(id);
+            var rezenDuration = DataTableMgr.GetTable<RezenTable>(TableType.RezenTable).GetRezenDuration(id);
             RezenInfo info = new RezenInfo { rezenDuration = rezenDuration, lastRezenTime = 0f };
             itemRezenInfos.Add(id, info);
         }

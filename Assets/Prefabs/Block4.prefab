@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 4681705882621720175}
   - component: {fileID: 7905801078950272547}
   m_Layer: 0
-  m_Name: MiddlePocket
+  m_Name: LeftPocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 1432031248767941583}
   - component: {fileID: 8745714753855066933}
   m_Layer: 0
-  m_Name: LeftPocket
+  m_Name: MiddlePocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -207,8 +207,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40e3631387218854982b39c50fb081eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePrefabs:
-  - {fileID: 8039872794254532310, guid: 7bcc2885e9f67024cb141a1aa65e517f, type: 3}
+  pockets:
+  - {fileID: 7905801078950272547}
+  - {fileID: 5288200056707923612}
+  - {fileID: 8852759529140581797}
+  - {fileID: 8304850771637375890}
+  - {fileID: 6318460285286831725}
+  - {fileID: 3239793840279225816}
+  - {fileID: 1976461775695173364}
+  - {fileID: 8745714753855066933}
+  - {fileID: 5526175077190112003}
 --- !u!1 &2283668558625729184
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,7 +309,7 @@ GameObject:
   - component: {fileID: 3587903919012167664}
   - component: {fileID: 8304850771637375890}
   m_Layer: 0
-  m_Name: MiddlePocket
+  m_Name: LeftPocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -348,7 +356,7 @@ GameObject:
   - component: {fileID: 6322875747251395557}
   - component: {fileID: 6318460285286831725}
   m_Layer: 0
-  m_Name: LeftPocket
+  m_Name: MiddlePocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -395,7 +403,7 @@ GameObject:
   - component: {fileID: 5030744605173943588}
   - component: {fileID: 1976461775695173364}
   m_Layer: 0
-  m_Name: MiddlePocket
+  m_Name: LeftPocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -562,7 +570,7 @@ GameObject:
   - component: {fileID: 8692311263247296816}
   - component: {fileID: 5288200056707923612}
   m_Layer: 0
-  m_Name: LeftPocket
+  m_Name: MiddlePocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7156504513219662292}
   - component: {fileID: 2132478549787668162}
   m_Layer: 0
-  m_Name: MiddlePocket
+  m_Name: LeftPocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 411234426080776298}
   - component: {fileID: 1932036131449672566}
   m_Layer: 0
-  m_Name: LeftPocket
+  m_Name: MIddlePocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 1446982742558890131}
   - component: {fileID: 864430362126040320}
   m_Layer: 0
-  m_Name: MiddlePocket
+  m_Name: LeftPocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -314,8 +314,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40e3631387218854982b39c50fb081eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePrefabs:
-  - {fileID: 0}
+  pockets:
+  - {fileID: 864430362126040320}
+  - {fileID: 6008730897899799622}
+  - {fileID: 8661203391428590200}
+  - {fileID: 2132478549787668162}
+  - {fileID: 8930487920055136796}
+  - {fileID: 9206902219841976809}
+  - {fileID: 406485250867681627}
+  - {fileID: 1932036131449672566}
+  - {fileID: 5106165646677711687}
 --- !u!1 &3327568353662408678
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,7 +335,7 @@ GameObject:
   - component: {fileID: 8074662771039831766}
   - component: {fileID: 406485250867681627}
   m_Layer: 0
-  m_Name: MiddlePocket
+  m_Name: LeftPocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -455,7 +463,7 @@ GameObject:
   - component: {fileID: 9001461515627265769}
   - component: {fileID: 6008730897899799622}
   m_Layer: 0
-  m_Name: LeftPocket
+  m_Name: MIddlePocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -570,7 +578,7 @@ GameObject:
   - component: {fileID: 4203672823635965613}
   - component: {fileID: 8930487920055136796}
   m_Layer: 0
-  m_Name: LeftPocket
+  m_Name: MIddlePocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
