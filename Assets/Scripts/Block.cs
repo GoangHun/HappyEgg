@@ -22,14 +22,14 @@ public class Block : MonoBehaviour
         scoreItem = ItemManager.Instance.scoreItemPrefab;
         itemPrefabs = ItemManager.Instance.itemPrefabs;
         itemRezenInfos = ItemManager.Instance.itemRezenInfos;
-		keys = new List<string>(itemRezenInfos.Keys);
 		obstaclePrefabs = ObstacleManager.Instance.obstaclePrefabs;
-	}
+
+        keys = new List<string>(itemRezenInfos.Keys);
+    }
 
 	public void CreateObstacles()
-    {
-		
-		GameManager.Instance.StageInfo.TryGetValue(GameManager.Instance.RandomStageLevel, out int num);
+    {     
+        GameManager.Instance.StageInfo.TryGetValue((int)GameManager.Instance.currentStage, out int num);
         for (int i = 0; i < num; i++)
         {
 			if (isUsePocketCount >= pockets.Length)
@@ -56,8 +56,6 @@ public class Block : MonoBehaviour
 
 	public void CreateItems()
     {
-		Debug.Log("CreateItems");
-
 		for (int i = 0; i < keys.Count; i++)
         {
 			var key = keys[i];
@@ -103,8 +101,6 @@ public class Block : MonoBehaviour
 
     public void CreateSocreItems()
     {
-		Debug.Log("CreateSocreItems");
-
 		for (int i = 0; i < pockets.Length; i++)
         {
             if (isUsePocketCount >= pockets.Length)

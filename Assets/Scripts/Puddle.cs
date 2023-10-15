@@ -12,7 +12,7 @@ public class Puddle : Obstacle
 		if (other.CompareTag("Player"))
 		{
 			var player = other.GetComponent<Player>();
-			//player.SpeedDeBuff(speed, time);
+			player.SpeedDeBuff(speed, time);
 		}
 	}
 }

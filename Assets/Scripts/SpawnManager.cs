@@ -36,34 +36,9 @@ public class SpawnManager : MonoBehaviour
 	public LineInfo ReadLine()	//블럭 루프 때 호출
 	{
 		LineInfo lineInfo = new LineInfo();
-		switch (GameManager.Instance.currentStage)
-		{
-			case Stage.One:
-				lineInfo = DataTableMgr.GetTable<StageTable>(TableType.Stage1).GetLine(Header++);
-			break;
-
-			case Stage.Two:
-				lineInfo = DataTableMgr.GetTable<StageTable>(TableType.Stage2).GetLine(Header++);
-			break;
-
-			case Stage.Three:
-				lineInfo = DataTableMgr.GetTable<StageTable>(TableType.Stage3).GetLine(Header++);
-			break;
-
-			case Stage.Four:
-				lineInfo = DataTableMgr.GetTable<StageTable>(TableType.Stage4).GetLine(Header++);
-			break;
-
-			case Stage.Five:
-				lineInfo = DataTableMgr.GetTable<StageTable>(TableType.Stage5).GetLine(Header++);
-			break;
-		}
-
-		IsEnd = Header >= DataTableMgr.GetTable<StageTable>(TableType.Stage1).Count();
+        lineInfo = DataTableMgr.GetTable<StageTable>(TableType.Stage1).GetLine(Header++);
+        IsEnd = Header >= DataTableMgr.GetTable<StageTable>(TableType.Stage1).Count();
 
 		return lineInfo;
 	}
-
-	
-
 }

@@ -2,18 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Unity.Collections.AllocatorManager;
+using static UnityEngine.GraphicsBuffer;
+using GM = GameManager;
 
 public class Conveyor : MonoBehaviour
 {
 	public float speed = 0f;
-	public List<Block> blocks = new List<Block>();
 	public Block lastBlock;
 	public Player player;
+    public List<Block> blocks = new List<Block>();
 
-	private float defaultSpeed;
+    private float defaultSpeed;
 	private float blockHeight;
 	private Coroutine speedBuffCoroutine;
-	private Coroutine speedDebuffCoroutine; // 현재 실행 중인 코루틴을 저장할 변수
+	private Coroutine speedDebuffCoroutine; 
 
 
 	private void Awake()
@@ -29,35 +31,8 @@ public class Conveyor : MonoBehaviour
 			
 			var target = collision.GetComponent<Block>();
 
-			if (SpawnManager.Instance.IsEnd)
-			{
-				if (!lastBlock.gameObject.activeSelf)
-				{
-					lastBlock.gameObject.SetActive(true);   //4번째 블럭 위치에 배치해 놓고 비활성화 시켜놓음
-					blocks.Add(lastBlock);
-				}
-				//target.Clear();
-				return;
-			}
-
-			var pos = new Vector3(0, 0, blockHeight * blocks.Count);
-			target.transform.position += pos;
-
-			if (GameManager.Instance.currentStage == Stage.None)
-				return;
-			else if (GameManager.Instance.currentStage == Stage.Challenge)
-			{
-				target.Clear();
-				target.CreateItems();
-				target.CreateObstacles();
-				target.CreateSocreItems();
-			}
-			else
-			{
-				target.Clear();
-				target.SetObject();
-			}
-        }
+			OnTriggerState(target);
+		}
 	}
 
 	void Update()
@@ -68,7 +43,59 @@ public class Conveyor : MonoBehaviour
 		}
 	}
 
-	public void SpeedBuff(float speed, float time)
+    private void OnTriggerState(Block target)
+    {
+        switch (GM.Instance.currentStage)
+        {
+            case Stage.Challenge:
+                // Challenge 상태에서의 업데이트 동작
+                break;
+            case Stage.Special:
+				SpecialStageOnTrigger(target);
+                break;
+            case Stage.One:
+            case Stage.Two:
+            case Stage.Three:
+            case Stage.Four:
+            case Stage.Five:
+                NomalStageOnTrigger(target);
+                break;
+        }
+    }
+
+	private void NomalStageOnTrigger(Block target)
+	{
+        var pos = new Vector3(0, 0, blockHeight * blocks.Count);
+        target.transform.position += pos;
+
+        target.Clear();
+        target.CreateItems();
+        target.CreateObstacles();
+        target.CreateSocreItems();
+    }
+
+	private void SpecialStageOnTrigger(Block target)
+	{
+        if (SpawnManager.Instance.IsEnd)
+        {
+            if (!lastBlock.gameObject.activeSelf)
+            {
+                lastBlock.gameObject.SetActive(true);   //4번째 블럭 위치에 배치해 놓고 비활성화 시켜놓음
+                blocks.Add(lastBlock);
+            }
+            //target.Clear();
+            return;
+        }
+
+        var pos = new Vector3(0, 0, blockHeight * blocks.Count);
+        target.transform.position += pos;
+
+        target.Clear();
+        target.SetObject();
+    }
+
+
+    public void SpeedBuff(float speed, float time)
 	{
 		if (speedDebuffCoroutine != null)
 		{

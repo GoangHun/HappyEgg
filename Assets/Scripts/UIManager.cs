@@ -8,8 +8,17 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-	private static UIManager instance;
 
+    public GameObject timerProgress;
+    public GameObject pauseButton;
+    public GameObject gameEndUI;
+    public GameObject pausePanel;
+    public GameObject countTextGO;
+    public Image timerProgressImage;
+
+    public float countTime = 3f;
+    
+    private static UIManager instance;
 	public static UIManager Instance
 	{
 		get
@@ -23,13 +32,6 @@ public class UIManager : MonoBehaviour
 		}
 	}
 
-	public Image timerProgress;
-	public GameObject scoreTextGO;
-	public GameObject pausePanel;
-	public GameObject countTextGO;
-	public float countTime = 3f;
-
-
 	private void Awake()
 	{
 		if (instance != null)
@@ -40,19 +42,22 @@ public class UIManager : MonoBehaviour
 		{
 			instance = this;
 		}
-	}
-
+    }
 
     public void UpdateTimerProgress(float time) 
 	{
-		timerProgress.fillAmount = time;
+        timerProgressImage.fillAmount = time;
 	}
 
-	public void Restart()
+	public void EndGame()
 	{
-		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Time.timeScale = 1f;
+        gameEndUI.SetActive(true);
+        pauseButton.SetActive(false);
+		if (timerProgress != null)
+			timerProgress.SetActive(false);
     }
+
+
 
 	public void Pause()
 	{
@@ -60,8 +65,7 @@ public class UIManager : MonoBehaviour
 		{
 			GameManager.Instance.Pause();
 			pausePanel.SetActive(true);
-		}
-		
+		}	
 	}
 
 	public void Continue()
