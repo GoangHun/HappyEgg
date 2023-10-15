@@ -70,7 +70,7 @@ public class Conveyor : MonoBehaviour
 
         target.Clear();
         target.CreateItems();
-        target.CreateObstacles();
+        target.CreateTotalObstacles();
         target.CreateSocreItems();
     }
 

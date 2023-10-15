@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         playTimer = playTime;
+        Pause();
     }
 
     private void Update()

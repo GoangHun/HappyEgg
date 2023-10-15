@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class ObstacleManager : MonoBehaviour
 {
+    public int rockCount;
+    public int puddleCount;
+    public int BarricadeCount;
+
     private static ObstacleManager instance;
     public static ObstacleManager Instance
     {

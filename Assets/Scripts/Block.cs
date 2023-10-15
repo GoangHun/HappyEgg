@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ public class Block : MonoBehaviour
 {
 	public Pocket[] pockets;
 
-	private GameObject[] obstaclePrefabs;
+    private GameObject[] obstaclePrefabs;
     private GameObject scoreItem;
     private GameObject[] itemPrefabs;
     private Dictionary<string, RezenInfo> itemRezenInfos;
@@ -27,31 +28,37 @@ public class Block : MonoBehaviour
         keys = new List<string>(itemRezenInfos.Keys);
     }
 
-	public void CreateObstacles()
+	public void CreateTotalObstacles()
     {     
-        GameManager.Instance.StageInfo.TryGetValue((int)GameManager.Instance.currentStage, out int num);
-        for (int i = 0; i < num; i++)
-        {
-			if (isUsePocketCount >= pockets.Length)
-                return;
-            int obstacleIndex = Random.Range(0, obstaclePrefabs.Length);
-            int posIndex = Random.Range(0, pockets.Length);
+        //GameManager.Instance.StageInfo.TryGetValue((int)GameManager.Instance.currentStage, out int num);
+        if (ObstacleManager.Instance.rockCount > 0)
+            CreateObstacles(ObstacleManager.Instance.rockCount, obstaclePrefabs[0]);
+        if (ObstacleManager.Instance.puddleCount > 0)
+            CreateObstacles(ObstacleManager.Instance.puddleCount, obstaclePrefabs[1]);
 
-            
-            while (pockets[posIndex].ChildGo != null || !pockets[posIndex].Check())
+        //바리게이트 생성
+
+
+        void CreateObstacles(int count, GameObject prefeb)
+        {   
+            for (int i = 0; i < count; i++)
             {
-				posIndex = Random.Range(0, pockets.Length);
+                int posIndex = Random.Range(i * 3, i * 3 + 3);
+
+                while (pockets[posIndex].ChildGo != null)
+                {
+                    posIndex = Random.Range(0, pockets.Length);
+                }
+
+                var go = Instantiate(prefeb, pockets[posIndex].transform.position, Quaternion.identity);
+                var obstacle = go.GetComponent<Obstacle>();
+
+                obstacle.SetPocket(pockets[posIndex]);
+                ObstacleManager.Instance.Obstacles.Add(obstacle);
+                pockets[posIndex].ChildGo = go;
+                isUsePocketCount++;
             }
-
-            var go = Instantiate(obstaclePrefabs[obstacleIndex], pockets[posIndex].transform.position, Quaternion.identity);
-            var obstacle = go.GetComponent<Obstacle>();
-
-            //Instantiate에서 부모 객체를 정해버리면 스케일 값까지 적용되기 때문에 생성 뒤 배정
-            obstacle.SetPocket(pockets[posIndex]);
-            ObstacleManager.Instance.Obstacles.Add(obstacle);
-            pockets[posIndex].ChildGo = go;
-            isUsePocketCount++;
-        }    
+        }
 	}
 
 	public void CreateItems()

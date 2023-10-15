@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     public GameObject gameEndUI;
     public GameObject pausePanel;
     public GameObject countTextGO;
+	public GameObject shootSelect;
     public Image timerProgressImage;
 
     public float countTime = 3f;

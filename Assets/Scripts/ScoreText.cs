@@ -41,6 +41,6 @@ public class ScoreText : MonoBehaviour
     void UpdateScoreText()
     {
         // 6자리로 맞춰서 텍스트 업데이트
-        m_TextMeshPro.text = "Score: " + currentScore.ToString("D6");
+        m_TextMeshPro.text = currentScore.ToString("D6");
     }
 }
