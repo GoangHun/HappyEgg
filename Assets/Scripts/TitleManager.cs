@@ -53,6 +53,7 @@ public class TitleManager : MonoBehaviour
     {
         //test code
         currentState = main;
+        //SetResolution();
     }
 
 
@@ -112,6 +113,14 @@ public class TitleManager : MonoBehaviour
         }
     }
 
+    public void SetResolution()
+    {
+        int setWidth = 768;
+        int setHeight = 1366;
+
+        Screen.SetResolution(setWidth, setHeight, false);
+    }
+
 }
 
 public interface ISceneState
@@ -142,6 +151,8 @@ public class TitleState : ISceneState
     {
         TitleManager.Instance.titlePanel.SetActive(false);
     }
+
+    
 }
 
 public class MainState : ISceneState
