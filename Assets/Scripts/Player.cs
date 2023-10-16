@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
 	private Pocket ShootingItemPocket;
     public Conveyor conveyor;
     public ParticleSystem shootingEffect;
+    public ParticleSystem confusionEffect;
+
 	public float hitEffectTime = 1f;
     public float shootingCoolTime = 30f;
     public float shootingSpeed = 20f;

@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 5
+  particle: {fileID: 0}
 --- !u!136 &6269726819036145606
 CapsuleCollider:
   m_ObjectHideFlags: 0

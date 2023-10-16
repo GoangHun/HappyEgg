@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.1741276, g: 0.21774769, b: 0.29994425, a: 1}
+  m_IndirectSpecularColor: {r: 0.17412747, g: 0.21774738, b: 0.29994363, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1026,6 +1026,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4261944088724397344, guid: e28a293c65619de4c8555aae4c15ca40,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4261944088724397344, guid: e28a293c65619de4c8555aae4c15ca40,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4261944088724397344, guid: e28a293c65619de4c8555aae4c15ca40,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1715073172}
@@ -1034,6 +1044,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1022174633}
+    - target: {fileID: 4261944088724397344, guid: e28a293c65619de4c8555aae4c15ca40,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1022174637}
+    - target: {fileID: 4261944088724397344, guid: e28a293c65619de4c8555aae4c15ca40,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4261944088724397344, guid: e28a293c65619de4c8555aae4c15ca40,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -1044,6 +1064,31 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: Play
       objectReference: {fileID: 0}
+    - target: {fileID: 4261944088724397344, guid: e28a293c65619de4c8555aae4c15ca40,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: LastRezenTimerUpdate
+      objectReference: {fileID: 0}
+    - target: {fileID: 4261944088724397344, guid: e28a293c65619de4c8555aae4c15ca40,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: ItemManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4261944088724397344, guid: e28a293c65619de4c8555aae4c15ca40,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727095263995382145, guid: e28a293c65619de4c8555aae4c15ca40,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727095263995382145, guid: e28a293c65619de4c8555aae4c15ca40,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4727095263995382145, guid: e28a293c65619de4c8555aae4c15ca40,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1054,6 +1099,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1022174633}
+    - target: {fileID: 4727095263995382145, guid: e28a293c65619de4c8555aae4c15ca40,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1022174637}
+    - target: {fileID: 4727095263995382145, guid: e28a293c65619de4c8555aae4c15ca40,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4727095263995382145, guid: e28a293c65619de4c8555aae4c15ca40,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -1064,6 +1119,31 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: Play
       objectReference: {fileID: 0}
+    - target: {fileID: 4727095263995382145, guid: e28a293c65619de4c8555aae4c15ca40,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: LastRezenTimerUpdate
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727095263995382145, guid: e28a293c65619de4c8555aae4c15ca40,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: ItemManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727095263995382145, guid: e28a293c65619de4c8555aae4c15ca40,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6402173135067233557, guid: e28a293c65619de4c8555aae4c15ca40,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6402173135067233557, guid: e28a293c65619de4c8555aae4c15ca40,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6402173135067233557, guid: e28a293c65619de4c8555aae4c15ca40,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1076,6 +1156,16 @@ PrefabInstance:
       objectReference: {fileID: 1022174633}
     - target: {fileID: 6402173135067233557, guid: e28a293c65619de4c8555aae4c15ca40,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1022174637}
+    - target: {fileID: 6402173135067233557, guid: e28a293c65619de4c8555aae4c15ca40,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6402173135067233557, guid: e28a293c65619de4c8555aae4c15ca40,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetToyHammer
       objectReference: {fileID: 0}
@@ -1083,6 +1173,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 6402173135067233557, guid: e28a293c65619de4c8555aae4c15ca40,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: LastRezenTimerUpdate
+      objectReference: {fileID: 0}
+    - target: {fileID: 6402173135067233557, guid: e28a293c65619de4c8555aae4c15ca40,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: ItemManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6402173135067233557, guid: e28a293c65619de4c8555aae4c15ca40,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1599,7 +1704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1715073172}
-  playTime: 30
+  playTime: 90
   currentStage: 2
 --- !u!4 &1022174634
 Transform:
@@ -1675,12 +1780,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 351b086ed7cb5f248a23cc59b34642e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rockCount: 3
-  puddleCount: 1
-  BarricadeCount: 0
   obstaclePrefabs:
   - {fileID: 8039872794254532310, guid: 7bcc2885e9f67024cb141a1aa65e517f, type: 3}
   - {fileID: 7342824277552097062, guid: c932ff62e5d28bd4696e0bae0ceec4bf, type: 3}
+  mushroomPrefab: {fileID: 8519497596766631168, guid: d0ec07d9b9d0cdc4a9b86e36005dbcb9,
+    type: 3}
+  rockCount: 2
+  puddleCount: 1
+  barricadeCount: 0
+  mushroomRezenDuration: 30
+  mushroomLastRezenTime: 0
 --- !u!1001 &1068514667
 PrefabInstance:
   m_ObjectHideFlags: 0

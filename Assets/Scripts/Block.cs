@@ -1,5 +1,6 @@
 using JetBrains.Annotations;
 using System.Collections.Generic;
+using UnityEditor.Presets;
 using UnityEngine;
 
 
@@ -8,6 +9,7 @@ public class Block : MonoBehaviour
 	public Pocket[] pockets;
 
     private GameObject[] obstaclePrefabs;
+    private GameObject mushroomPrefab;
     private GameObject scoreItem;
     private GameObject[] itemPrefabs;
     private Dictionary<string, RezenInfo> itemRezenInfos;
@@ -24,28 +26,40 @@ public class Block : MonoBehaviour
         itemPrefabs = ItemManager.Instance.itemPrefabs;
         itemRezenInfos = ItemManager.Instance.itemRezenInfos;
 		obstaclePrefabs = ObstacleManager.Instance.obstaclePrefabs;
+        mushroomPrefab = ObstacleManager.Instance.mushroomPrefab;
 
         keys = new List<string>(itemRezenInfos.Keys);
     }
 
 	public void CreateTotalObstacles()
-    {     
+    {
         //GameManager.Instance.StageInfo.TryGetValue((int)GameManager.Instance.currentStage, out int num);
-        if (ObstacleManager.Instance.rockCount > 0)
+        if (ObstacleManager.Instance.barricadeCount > 0)
+            CreateBarrier(ObstacleManager.Instance.barricadeCount);
+		if (ObstacleManager.Instance.rockCount > 0)
             CreateObstacles(ObstacleManager.Instance.rockCount, obstaclePrefabs[0]);
         if (ObstacleManager.Instance.puddleCount > 0)
             CreateObstacles(ObstacleManager.Instance.puddleCount, obstaclePrefabs[1]);
 
-        //官府霸捞飘 积己
+        if (mushroomPrefab != null &&
+			ObstacleManager.Instance.mushroomLastRezenTime + ObstacleManager.Instance.mushroomRezenDuration < Time.time)
+        {
+            Debug.Log("滚几积己");
+			CreateMushroom();
+		}
+			
 
 
-        void CreateObstacles(int count, GameObject prefeb)
+
+
+
+		void CreateObstacles(int count, GameObject prefeb)
         {   
             for (int i = 0; i < count; i++)
             {
-                int posIndex = Random.Range(i * 3, i * 3 + 3);
+                int posIndex = Random.Range(0, pockets.Length);
 
-                while (pockets[posIndex].ChildGo != null)
+                while (pockets[posIndex].ChildGo != null || !pockets[posIndex].Check(prefeb.tag))
                 {
                     posIndex = Random.Range(0, pockets.Length);
                 }
@@ -59,6 +73,44 @@ public class Block : MonoBehaviour
                 isUsePocketCount++;
             }
         }
+
+		void CreateBarrier(int count)
+        {
+			int posIndex = Random.Range(3, 6);
+
+			while (pockets[posIndex].ChildGo != null)
+			{
+				posIndex = Random.Range(3, 6);
+			}
+			var go = Instantiate(obstaclePrefabs[2], pockets[posIndex].transform.position, Quaternion.identity);
+			var obstacle = go.GetComponent<Obstacle>();
+
+			obstacle.SetPocket(pockets[posIndex]);
+			ObstacleManager.Instance.Obstacles.Add(obstacle);
+			pockets[posIndex].ChildGo = go;
+			isUsePocketCount++;
+		}
+
+        void CreateMushroom()
+        {
+			int posIndex = Random.Range(0, pockets.Length);
+
+			while (pockets[posIndex].ChildGo != null)
+			{
+				posIndex = Random.Range(0, pockets.Length);
+			}
+
+			var go = Instantiate(mushroomPrefab, pockets[posIndex].transform.position, Quaternion.identity);
+			var obstacle = go.GetComponent<Obstacle>();
+
+			obstacle.SetPocket(pockets[posIndex]);
+			ObstacleManager.Instance.Obstacles.Add(obstacle);
+			pockets[posIndex].ChildGo = go;
+			isUsePocketCount++;
+
+            ObstacleManager.Instance.mushroomLastRezenTime = Time.time;
+		}
+
 	}
 
 	public void CreateItems()

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -25,6 +26,7 @@ public class ItemManager : MonoBehaviour
     }
 
     public bool IsMagnetic { get; set; } = false;
+    
     public List<ScoreItem> ScoreItems { get; set; } = new List<ScoreItem>();
 
     public Dictionary<string, RezenInfo> itemRezenInfos = new Dictionary<string, RezenInfo>();
@@ -68,11 +70,25 @@ public class ItemManager : MonoBehaviour
         StartCoroutine(MagnetCoroutine(time));
     }
 
-    public IEnumerator MagnetCoroutine(float time)
+	public IEnumerator MagnetCoroutine(float time)
     {
         IsMagnetic = true;
         ToMagnetic();
         yield return new WaitForSeconds(time);
         IsMagnetic = false;
     }
+
+	
+
+	public void LastRezenTimerUpdate()
+    {
+		var keys = new List<string>(itemRezenInfos.Keys);
+
+		for (int i = 0; i < keys.Count; i++)
+        {
+			RezenInfo info = itemRezenInfos[keys[i]];
+			info.lastRezenTime = Time.time;
+			itemRezenInfos[keys[i]] = info;
+		}
+	}
 }

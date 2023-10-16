@@ -33,6 +33,9 @@ public class PlayerMovement : MonoBehaviour {
 				playerInput.endPos = Input.mousePosition;
 				var vec = playerInput.endPos.x - playerInput.startPos.x;
 
+				if (ObstacleManager.Instance.IsMushroom)
+					vec = -vec;
+
 				if (vec > 0)
 				{
 					++currentTransIndex;
@@ -45,18 +48,34 @@ public class PlayerMovement : MonoBehaviour {
 				}
 			}
 
-
 			//test code
-			if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+			if (ObstacleManager.Instance.IsMushroom)
 			{
-				--currentTransIndex;
-				currentTransIndex = currentTransIndex < 0 ? 0 : currentTransIndex;
+				if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+				{
+					--currentTransIndex;
+					currentTransIndex = currentTransIndex < 0 ? 0 : currentTransIndex;
+				}
+				if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+				{
+					++currentTransIndex;
+					currentTransIndex = currentTransIndex > 2 ? 2 : currentTransIndex;
+				}
 			}
-			if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+			else
 			{
-				++currentTransIndex;
-				currentTransIndex = currentTransIndex > 2 ? 2 : currentTransIndex;
+				if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+				{
+					--currentTransIndex;
+					currentTransIndex = currentTransIndex < 0 ? 0 : currentTransIndex;
+				}
+				if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+				{
+					++currentTransIndex;
+					currentTransIndex = currentTransIndex > 2 ? 2 : currentTransIndex;
+				}
 			}
+			
 		}
 	}
 

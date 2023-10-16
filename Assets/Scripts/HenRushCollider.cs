@@ -6,10 +6,9 @@ public class RushCollider : MonoBehaviour
 {
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.CompareTag("Obstacle"))
+		if (other.CompareTag("Obstacle") && other.name != "ShortBarrier")
 		{
 			other.GetComponent<Obstacle>().ChangeToSocreItem();
-			//보석생성
 		}
 	}
 }
