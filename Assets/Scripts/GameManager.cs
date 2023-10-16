@@ -7,12 +7,12 @@ using UnityEngine;
 public enum Stage
 {
     None = -1,
-    Challenge,
-    One,
+    One = 1,
     Two,
     Three,
     Four,
     Five,
+    Challenge,
     Special,
 }
 
@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public StageInfo stageInfo;
     public Player player;
     public float playTime = 180f;
     private float playTimer;
@@ -127,6 +128,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public bool CheckStageClear()
+    {
+        return Score >= stageInfo.clearScore;
+    }
+
     public void Play()
     {
         IsPause = false;
@@ -158,6 +164,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         ItemManager.Instance.LastRezenTimerUpdate();
+        ObstacleManager.Instance.LastRezenTimeUpdate();
         Play();
     }
 

@@ -30,8 +30,7 @@ public class ObstacleManager : MonoBehaviour
             return instance;
         }
     }
-
-    
+  
 
 	private void Awake()
     {
@@ -45,6 +44,11 @@ public class ObstacleManager : MonoBehaviour
         }
     }
 
+    public void LastRezenTimeUpdate()
+    {
+        mushroomLastRezenTime = Time.time;
+    }
+
 	public void ActionMushroom(float time, Player player)
 	{
 		StartCoroutine(MushroomCoroutine(time, player));
@@ -53,13 +57,12 @@ public class ObstacleManager : MonoBehaviour
 	public IEnumerator MushroomCoroutine(float time, Player player)
 	{
 		IsMushroom = true;
+        player.confusionEffect.gameObject.SetActive(true);
         player.confusionEffect.Play();
-		Debug.Log("파티클1" + player.confusionEffect.isPlaying);   //트루
 		yield return new WaitForSeconds(time);
-		Debug.Log("파티클2" + player.confusionEffect.isPlaying);   //펄스
 		player.confusionEffect.Stop();
-		Debug.Log("파티클3" + player.confusionEffect.isPlaying);   //펄스
-		IsMushroom = false;
+        player.confusionEffect.gameObject.SetActive(false);
+        IsMushroom = false;
 	}
 
 	public void AllSmash()  
