@@ -109,7 +109,7 @@ public class TitleManager : MonoBehaviour
             break;  
             case 6:
                 SceneManager.LoadScene("SpecialStage");
-            break;
+            break;   
         }
     }
 

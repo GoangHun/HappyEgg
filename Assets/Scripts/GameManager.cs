@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 	public Stage currentStage = Stage.None;
 	public int Score { get; private set; } = 0;
 	public int RandomStageLevel { get; set; } = 1;  //도전 모드에서 사용할 가변 난이도 레벨
-	public bool IsGameover { get; private set; } = false;
+	public bool IsGameover { get; private set; } = true;
 	public bool IsPause { get; private set; }
 	//public Dictionary<int, int> StageInfo { get; private set; } = new Dictionary<int, int>(); //스테이지 넘버, 장애물 생성 개수
 

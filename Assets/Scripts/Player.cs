@@ -40,17 +40,18 @@ public class Player : MonoBehaviour
 
 	private void Update()
 	{
-        if (!GameManager.Instance.IsGameover && 
-            playerInput.DoubleClick || Input.GetKeyDown(KeyCode.Space) && 
-            lastShootingTime + shootingCoolTime < Time.time)
+        if (!GameManager.Instance.IsGameover)
         {
-            lastShootingTime = Time.time;
-			for (int i = 0; i < currentShootingItem.Count; i++)
-			{
-                currentShootingItem[i].gameObject.SetActive(true);
-				currentShootingItem[i].Action();
-                shootingEffect.Play();
-				SpeedBuff(shootingSpeed, shootingSpeedUpTime);
+            if ( playerInput.DoubleClick || Input.GetKeyDown(KeyCode.Space) && lastShootingTime + shootingCoolTime < Time.time)
+            {
+				lastShootingTime = Time.time;
+				for (int i = 0; i < currentShootingItem.Count; i++)
+				{
+					currentShootingItem[i].gameObject.SetActive(true);
+					currentShootingItem[i].Action();
+					shootingEffect.Play();
+					SpeedBuff(shootingSpeed, shootingSpeedUpTime);
+				}
 			}   
         }
 
