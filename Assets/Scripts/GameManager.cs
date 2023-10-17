@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEditor;
 
 public enum Stage
 {
@@ -18,7 +19,20 @@ public enum Stage
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager instance;
+	public Player player;
+	public float playTime = 180f;
+	private float playTimer;
+
+	public Stage currentStage = Stage.None;
+	public int Score { get; private set; } = 0;
+	public int RandomStageLevel { get; set; } = 1;  //도전 모드에서 사용할 가변 난이도 레벨
+	public bool IsGameover { get; private set; } = false;
+	public bool IsPause { get; private set; }
+	//public Dictionary<int, int> StageInfo { get; private set; } = new Dictionary<int, int>(); //스테이지 넘버, 장애물 생성 개수
+
+	private StageInfo stageInfo;
+	private static GameManager instance;
+
     public static GameManager Instance
     {
         get
@@ -30,18 +44,7 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
-
-    public StageInfo stageInfo;
-    public Player player;
-    public float playTime = 180f;
-    private float playTimer;
-
-    public Stage currentStage = Stage.None;
-    public int Score { get; private set; } = 0;
-    public int RandomStageLevel { get; set; } = 1;  //도전 모드에서 사용할 가변 난이도 레벨
-    public bool IsGameover { get; private set; }
-    public bool IsPause { get; private set; }
-    public Dictionary<int, int> StageInfo { get; private set; } = new Dictionary<int, int>(); //스테이지 넘버, 장애물 생성 개수
+    
 
     private void Awake()
     {
@@ -54,12 +57,13 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
 
-        var obstacleTable = DataTableMgr.GetTable<ObstacleTable>(TableType.ObstacleTable);
+		stageInfo = GetComponent<StageInfo>();
 
+		/*var obstacleTable = DataTableMgr.GetTable<ObstacleTable>(TableType.ObstacleTable);
         for (int i = 1; i <= obstacleTable.GetCount(); i++)
         {
             StageInfo.Add(i, obstacleTable.GetObstacleCount(i));
-        }
+        }*/
     }
 
     private void Start()
@@ -128,7 +132,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public bool CheckStageClear()
+    public bool CheckStageComplet()
     {
         return Score >= stageInfo.clearScore;
     }
@@ -142,6 +146,14 @@ public class GameManager : MonoBehaviour
     {
         IsPause = true;
         Time.timeScale = 0f;
+    }
+
+    public void StartGame()
+    {
+        IsGameover = false;
+        ItemManager.Instance.LastRezenTimerUpdate();
+        ObstacleManager.Instance.LastRezenTimeUpdate();
+        Play();
     }
 
     public void EndGame()
@@ -163,10 +175,8 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        ItemManager.Instance.LastRezenTimerUpdate();
-        ObstacleManager.Instance.LastRezenTimeUpdate();
-        Play();
-    }
+        StartGame();
+	}
 
     public void SceneLoad(int num)
     {
@@ -201,11 +211,12 @@ public class GameManager : MonoBehaviour
                 currentStage = Stage.Special;
                 break;
             default:
-                SceneManager.LoadScene("TitleScene");
+				//LoadScene는 다음 프레임에 동작하기 때문에 남은 코드들 모두 실행함.
+				SceneManager.LoadScene("TitleScene");   
                 currentStage = Stage.None;
+				IsGameover = true;
+				Play();
                 break;
         }
-        Play();
-        IsGameover = true;
     }
 }

@@ -10,7 +10,7 @@ public class Block : MonoBehaviour
 
     private GameObject[] obstaclePrefabs;
     private GameObject mushroomPrefab;
-    private GameObject scoreItem;
+    private GameObject[] scoreItems;
     private GameObject[] itemPrefabs;
     private Dictionary<string, RezenInfo> itemRezenInfos;
 	private List<string> keys;
@@ -22,7 +22,7 @@ public class Block : MonoBehaviour
 
     private void Start()
     {
-        scoreItem = ItemManager.Instance.scoreItemPrefab;
+        scoreItems = ItemManager.Instance.scoreItemPrefabs;
         itemPrefabs = ItemManager.Instance.itemPrefabs;
         itemRezenInfos = ItemManager.Instance.itemRezenInfos;
 		obstaclePrefabs = ObstacleManager.Instance.obstaclePrefabs;
@@ -48,10 +48,6 @@ public class Block : MonoBehaviour
 			CreateMushroom();
 		}
 			
-
-
-
-
 
 		void CreateObstacles(int count, GameObject prefeb)
         {   
@@ -167,7 +163,7 @@ public class Block : MonoBehaviour
             if (pockets[i].ChildGo != null)
                 continue;
 
-            pockets[i].ChildGo = Instantiate(scoreItem, pockets[i].transform.position, Quaternion.identity);
+            pockets[i].ChildGo = Instantiate(scoreItems[0], pockets[i].transform.position, Quaternion.identity);
 
             var scoreItemComp = pockets[i].ChildGo.GetComponent<ScoreItem>();
             ItemManager.Instance.ScoreItems.Add(scoreItemComp);
@@ -253,7 +249,7 @@ public class Block : MonoBehaviour
             case 1:
                 return obstaclePrefabs[entity];
             case 2:
-                return scoreItem;
+                return scoreItems[entity];
             default: return null;
         }   
     }

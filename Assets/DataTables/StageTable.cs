@@ -34,7 +34,7 @@ public class StageTable : DataTable
 
 	public StageTable(string num)
 	{
-		path = "Tables/StageTable" + num;
+		path = "Tables/SpecialStage" + num;
 		Load();
 	}
 

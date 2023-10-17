@@ -5,6 +5,7 @@ using UnityEngine;
 public class Magnet : Item
 {
 	public float durationTime = 8f;
+
 	public void OnTriggerEnter(Collider other)
 	{
 		if (other.CompareTag("Player"))

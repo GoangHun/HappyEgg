@@ -40,7 +40,9 @@ public class Player : MonoBehaviour
 
 	private void Update()
 	{
-        if (playerInput.DoubleClick || Input.GetKeyDown(KeyCode.Space) && lastShootingTime + shootingCoolTime < Time.time)
+        if (!GameManager.Instance.IsGameover && 
+            playerInput.DoubleClick || Input.GetKeyDown(KeyCode.Space) && 
+            lastShootingTime + shootingCoolTime < Time.time)
         {
             lastShootingTime = Time.time;
 			for (int i = 0; i < currentShootingItem.Count; i++)

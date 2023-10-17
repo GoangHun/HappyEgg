@@ -23,7 +23,7 @@ public class Obstacle : MonoBehaviour
 
 	public void ChangeToSocreItem()
 	{
-		ParentPocket.ChildGo = Instantiate(ItemManager.Instance.scoreItemPrefab, ParentPocket.transform.position, Quaternion.identity);
+		ParentPocket.ChildGo = Instantiate(ItemManager.Instance.scoreItemPrefabs[1], ParentPocket.transform.position, Quaternion.identity);
 
 		var scoreItemComp = ParentPocket.ChildGo.GetComponent<ScoreItem>();
 		ItemManager.Instance.ScoreItems.Add(scoreItemComp);

@@ -29,8 +29,7 @@ public class ObstacleManager : MonoBehaviour
             }
             return instance;
         }
-    }
-  
+    } 
 
 	private void Awake()
     {
@@ -67,11 +66,11 @@ public class ObstacleManager : MonoBehaviour
 
 	public void AllSmash()  
     {
-        for (int i = 0; i < Obstacles.Count; i++)
-        {
+		for (int i = Obstacles.Count - 1; i >= 0; i--)
+		{
 			if (Obstacles[i].name == "ShortBarrier(Clone)")
 				continue;
-			Obstacles[i].OnSmash();
+			Obstacles[i].OnSmash();	
 		}
     }
 }

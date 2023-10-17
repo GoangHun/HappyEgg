@@ -6,11 +6,7 @@ public enum TableType
 {
     ObstacleTable = 0,
     RezenTable,
-    Stage1,
-    Stage2,
-    Stage3,
-    Stage4,
-    Stage5,
+    Stage1, //Special Stage1
 }
 
 public static class DataTableMgr
@@ -22,8 +18,8 @@ public static class DataTableMgr
     {
         tables.Clear();
 
-		var obstacleTable = new ObstacleTable();
-		tables.Add(TableType.ObstacleTable, obstacleTable);
+		/*var obstacleTable = new ObstacleTable();
+		tables.Add(TableType.ObstacleTable, obstacleTable);*/
 		var rezenTable = new RezenTable();
         tables.Add(TableType.RezenTable, rezenTable);
         var stageTable = new StageTable("1");

@@ -12,7 +12,16 @@ public struct RezenInfo
 
 public class ItemManager : MonoBehaviour
 {
-    private static ItemManager instance;
+	public bool IsMagnetic { get; set; } = false;
+	public List<ScoreItem> ScoreItems { get; set; } = new List<ScoreItem>();
+	public Dictionary<string, RezenInfo> itemRezenInfos = new Dictionary<string, RezenInfo>();
+	public Conveyor conveyor;
+	public GameObject[] scoreItemPrefabs;
+	public GameObject[] itemPrefabs;    //리젠 우선 순위(1위, 2위...) 
+	public GameObject[] shootingItems;
+	public string[] rezenTableId;
+
+	private static ItemManager instance;
     public static ItemManager Instance
     {
         get
@@ -24,18 +33,6 @@ public class ItemManager : MonoBehaviour
             return instance;
         }
     }
-
-    public bool IsMagnetic { get; set; } = false;
-    
-    public List<ScoreItem> ScoreItems { get; set; } = new List<ScoreItem>();
-
-    public Dictionary<string, RezenInfo> itemRezenInfos = new Dictionary<string, RezenInfo>();
-    public Conveyor conveyor;
-    public GameObject scoreItemPrefab;
-    public GameObject[] itemPrefabs;    //리젠 우선 순위(1위, 2위...) 
-	public GameObject[] shootingItems;
-    public string[] rezenTableId;
-
 
 	private void Awake()
 	{
