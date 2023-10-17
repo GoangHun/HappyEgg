@@ -1087,7 +1087,7 @@ GameObject:
   - component: {fileID: 3623950187070074083}
   - component: {fileID: 7871021138737014443}
   m_Layer: 5
-  m_Name: Slider - Gradient
+  m_Name: BGMSlider
   m_TagString: Untagged
   m_Icon: {fileID: 2800000, guid: b5c20faaa6c0f514092673e609258886, type: 3}
   m_NavMeshLayer: 0
@@ -1210,7 +1210,7 @@ GameObject:
   - component: {fileID: 343962802342606008}
   - component: {fileID: 712372209965035065}
   m_Layer: 5
-  m_Name: Slider - Gradient (1)
+  m_Name: SESlider
   m_TagString: Untagged
   m_Icon: {fileID: 2800000, guid: b5c20faaa6c0f514092673e609258886, type: 3}
   m_NavMeshLayer: 0
