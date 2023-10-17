@@ -1,12 +1,20 @@
 using JetBrains.Annotations;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.Presets;
 using UnityEngine;
 
 
 public class Block : MonoBehaviour
 {
-	public Pocket[] pockets;
+    public float topOffset = -98f;
+    public float middleOffset = -82f;
+    public float bottomOffset = -66f;
+    public Transform topLineTrsf;
+    public Transform middleLineTrsf;
+    public Transform bottomLineTrsf;
+    public Transform playerTrsf;
+    public Pocket[] pockets;
 
     private GameObject[] obstaclePrefabs;
     private GameObject mushroomPrefab;
@@ -15,6 +23,7 @@ public class Block : MonoBehaviour
     private Dictionary<string, RezenInfo> itemRezenInfos;
 	private List<string> keys;
     private int isUsePocketCount = 0;
+    private float mostFarDistance;
 
     //오브젝트풀 사용 여부 보류
     //public ObjectPool<GameObject> obstaclePool;
@@ -31,7 +40,12 @@ public class Block : MonoBehaviour
         keys = new List<string>(itemRezenInfos.Keys);
     }
 
-	public void CreateTotalObstacles()
+    private void FixedUpdate()
+    {
+        UpdateLinePos();
+    }
+
+    public void CreateTotalObstacles()
     {
         //GameManager.Instance.StageInfo.TryGetValue((int)GameManager.Instance.currentStage, out int num);
         if (ObstacleManager.Instance.barricadeCount > 0)
@@ -252,6 +266,25 @@ public class Block : MonoBehaviour
                 return scoreItems[entity];
             default: return null;
         }   
+    }
+
+    public void SetLinePosition()
+    {
+        topLineTrsf.position += new Vector3(0, topOffset);
+        //middleLineTrsf.position = new Vector3(0, middleOffset);
+        //bottomLineTrsf.position = new Vector3(0, bottomOffset);
+
+        mostFarDistance = Mathf.Abs(playerTrsf.position.z - topLineTrsf.position.z);
+    }
+
+    public void UpdateLinePos()
+    {
+        var distance = Mathf.Abs(playerTrsf.position.z - topLineTrsf.position.z);
+        var lerpValue = (mostFarDistance - distance) / mostFarDistance;
+        var correction = Mathf.Lerp(topLineTrsf.position.y, 0, lerpValue);
+        var position = topLineTrsf.position;
+        position.y = correction;
+        topLineTrsf.position = position;
     }
 
 }

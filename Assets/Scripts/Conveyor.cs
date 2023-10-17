@@ -67,6 +67,7 @@ public class Conveyor : MonoBehaviour
 	{
         var pos = new Vector3(0, 0, blockHeight * blocks.Count);
         target.transform.position += pos;
+		target.SetLinePosition();
 
         target.Clear();
         target.CreateItems();
