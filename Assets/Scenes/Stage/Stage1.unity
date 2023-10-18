@@ -981,7 +981,7 @@ PrefabInstance:
     - target: {fileID: 3543855897213577027, guid: e28a293c65619de4c8555aae4c15ca40,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3720607880811086458, guid: e28a293c65619de4c8555aae4c15ca40,
         type: 3}
@@ -1927,6 +1927,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194231}
   - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
@@ -2113,6 +2114,21 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &963194231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1ee1c62c905bb24ea7c9cf3d9d40b56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TraumaExponent: 1
+  MaximumAngularShake: {x: 2, y: 2, z: 2}
+  MaximumTranslationShake: {x: 0, y: 0, z: 0}
 --- !u!1001 &998748089
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4070,21 +4086,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 99580608856525515, guid: 7f8907758b6c91f4d8aa237c147cf425,
         type: 3}
-      propertyPath: jumpForce
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 99580608856525515, guid: 7f8907758b6c91f4d8aa237c147cf425,
-        type: 3}
-      propertyPath: swaipDistance
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 99580608856525515, guid: 7f8907758b6c91f4d8aa237c147cf425,
-        type: 3}
-      propertyPath: swaipSensitivity
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 99580608856525515, guid: 7f8907758b6c91f4d8aa237c147cf425,
-        type: 3}
       propertyPath: lineTransforms.Array.data[0]
       value: 
       objectReference: {fileID: 1657696357}
@@ -4098,11 +4099,6 @@ PrefabInstance:
       propertyPath: lineTransforms.Array.data[2]
       value: 
       objectReference: {fileID: 131640427}
-    - target: {fileID: 408214091781411114, guid: 7f8907758b6c91f4d8aa237c147cf425,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1634982892326165114, guid: 7f8907758b6c91f4d8aa237c147cf425,
         type: 3}
       propertyPath: conveyor
@@ -4112,11 +4108,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3685123457411084788, guid: 7f8907758b6c91f4d8aa237c147cf425,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4762759191664143152, guid: 7f8907758b6c91f4d8aa237c147cf425,
         type: 3}
@@ -4167,46 +4158,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 5062809480557354948, guid: 7f8907758b6c91f4d8aa237c147cf425,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5062809481368553339, guid: 7f8907758b6c91f4d8aa237c147cf425,
-        type: 3}
-      propertyPath: looping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5062809481368553339, guid: 7f8907758b6c91f4d8aa237c147cf425,
-        type: 3}
-      propertyPath: stopAction
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5062809481368553339, guid: 7f8907758b6c91f4d8aa237c147cf425,
-        type: 3}
-      propertyPath: lengthInSec
-      value: 5.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7636586403364317796, guid: 7f8907758b6c91f4d8aa237c147cf425,
-        type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7636586403364317796, guid: 7f8907758b6c91f4d8aa237c147cf425,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7636586403364317796, guid: 7f8907758b6c91f4d8aa237c147cf425,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7636586403364317796, guid: 7f8907758b6c91f4d8aa237c147cf425,
-        type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

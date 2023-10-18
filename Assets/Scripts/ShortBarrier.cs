@@ -12,6 +12,7 @@ public class ShortBarrier : Obstacle
 		{
 			var player = other.GetComponent<Player>();
 			player.OnDamage(damage);
+			Camera.main.GetComponent<StressReceiver>().InduceStress(0.5f);
 		}
 	}
 }

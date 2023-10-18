@@ -71,8 +71,12 @@ public class Player : MonoBehaviour
     {
         GameManager.Instance.SetTimer(-damage);
         if (!IsHitEffect)
-            StartCoroutine(OnHitEffect());
+        {
+			StartCoroutine(OnHitEffect());
+		}
     }
+
+    //교체한 셰이더에 서페이스 옵션 노드가 없어서 사용불가
     public IEnumerator OnHitEffect()
     {
         IsHitEffect = true;
@@ -89,7 +93,6 @@ public class Player : MonoBehaviour
             renderer.material.color = color;
 
             yield return new WaitForSeconds(0.1f);
-            Debug.Log(time > Time.time);
         }
         IsHitEffect = false;
     }

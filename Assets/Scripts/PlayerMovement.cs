@@ -36,6 +36,8 @@ public class PlayerMovement : MonoBehaviour {
 
 	private void Update()
 	{
+		Debug.Log(isJump);
+
 		if (!GameManager.Instance.IsGameover)
 		{
 			if (Input.GetMouseButtonDown(0))
@@ -72,7 +74,8 @@ public class PlayerMovement : MonoBehaviour {
 				}
 				else
 				{
-					Jump();
+					if(!isJump)
+						Jump();
 				}
 			}
 
