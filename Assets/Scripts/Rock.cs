@@ -14,5 +14,4 @@ public class Rock : Obstacle
 			player.OnDamage(damage);
 		}
 	}
-
 }

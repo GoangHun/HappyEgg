@@ -42,7 +42,6 @@ public class StageTable : DataTable
 	{
 		var csvStr = Resources.Load<TextAsset>(path);   //path확장자를 지워줘야 함. Resources폴더에 저장
 														//string csvFileText = File.ReadAllText(path);
-
 		TextReader reader = new StringReader(csvStr.text);
 
 		var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture));

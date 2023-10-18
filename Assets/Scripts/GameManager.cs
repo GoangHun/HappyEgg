@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEditor;
+using SaveDataVC = SaveDataV1;
 
 public enum Stage
 {
@@ -132,10 +133,29 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public bool CheckStageComplet()
+    public bool CheckStageCompleted()
     {
-        return Score >= stageInfo.clearScore;
+		return Score >= stageInfo.clearScore;
     }
+
+    public void Save()
+    {
+		var saveData = new SaveDataVC();
+		var loadData = SaveLoadSystem.Load("saveData.json") as SaveDataVC;
+		if (loadData != null)
+		{
+            saveData = loadData;
+			saveData.BestScore = Score > loadData.BestScore ? Score : loadData.BestScore;
+		}
+		else
+		{
+			saveData.BestScore = Score;
+		}
+
+        if ((int)currentStage <= 4)
+            saveData.GetType().GetProperty("ClearStage" + ((int)currentStage + 1)).SetValue(saveData, true);
+		SaveLoadSystem.Save(saveData, "saveData.json");
+	}
 
     public void Play()
     {
@@ -160,7 +180,8 @@ public class GameManager : MonoBehaviour
     {
         IsGameover = true;
         Pause();
-        UIManager.Instance.EndGame();
+		Save();
+		UIManager.Instance.EndGame();
     }
 
     public void QuitGame()

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using SaveDataVC = SaveDataV1;
 
 public enum SceneMode
 {
@@ -18,7 +20,13 @@ public class TitleManager : MonoBehaviour
     public GameObject mainPanel;
     public GameObject optionPanel;
 
-    private static TitleManager instance;
+    public Button stage1Button;
+	public Button stage2Button;
+	public Button stage3Button;
+	public Button stage4Button;
+	public Button stage5Button;
+
+	private static TitleManager instance;
     private ISceneState currentState;
 
     private TitleState title = new TitleState();
@@ -51,8 +59,15 @@ public class TitleManager : MonoBehaviour
 
     private void Start()
     {
-        //test code
-        currentState = main;
+        var saveData = SaveLoadSystem.Load("saveData.json") as SaveDataVC;
+
+        stage2Button.enabled = saveData.ClearStage2;
+        stage3Button.enabled = saveData.ClearStage3;
+        stage4Button.enabled = saveData.ClearStage4;
+        stage5Button.enabled = saveData.ClearStage5;
+
+		//test code
+		currentState = main;
         //SetResolution();
     }
 

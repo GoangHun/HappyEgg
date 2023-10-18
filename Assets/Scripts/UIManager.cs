@@ -53,7 +53,7 @@ public class UIManager : MonoBehaviour
 
 	public void ContinueButton()
 	{
-		if (GameManager.Instance.CheckStageComplet())
+		if (GameManager.Instance.CheckStageCompleted())
 		{
 			winPopup.SetActive(true);
 			ItemManager.Instance.LastRezenTimerUpdate();

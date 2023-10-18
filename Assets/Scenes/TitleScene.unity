@@ -1399,6 +1399,11 @@ MonoBehaviour:
   titlePanel: {fileID: 0}
   mainPanel: {fileID: 1643761927}
   optionPanel: {fileID: 0}
+  stage1Button: {fileID: 818173117}
+  stage2Button: {fileID: 388579044}
+  stage3Button: {fileID: 1120437198}
+  stage4Button: {fileID: 225410689}
+  stage5Button: {fileID: 852413636}
 --- !u!4 &768805726
 Transform:
   m_ObjectHideFlags: 0

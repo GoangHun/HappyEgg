@@ -42,7 +42,7 @@ public class Block : MonoBehaviour
 
     private void FixedUpdate()
     {
-        UpdateLinePos();
+        //UpdateLinePos();
     }
 
     public void CreateTotalObstacles()
@@ -58,7 +58,6 @@ public class Block : MonoBehaviour
         if (mushroomPrefab != null &&
 			ObstacleManager.Instance.mushroomLastRezenTime + ObstacleManager.Instance.mushroomRezenDuration < Time.time)
         {
-            Debug.Log("¹ö¼¸»ý¼º");
 			CreateMushroom();
 		}
 			
@@ -266,25 +265,6 @@ public class Block : MonoBehaviour
                 return scoreItems[entity];
             default: return null;
         }   
-    }
-
-    public void SetLinePosition()
-    {
-        topLineTrsf.position += new Vector3(0, topOffset);
-        //middleLineTrsf.position = new Vector3(0, middleOffset);
-        //bottomLineTrsf.position = new Vector3(0, bottomOffset);
-
-        mostFarDistance = Mathf.Abs(playerTrsf.position.z - topLineTrsf.position.z);
-    }
-
-    public void UpdateLinePos()
-    {
-        var distance = Mathf.Abs(playerTrsf.position.z - topLineTrsf.position.z);
-        var lerpValue = (mostFarDistance - distance) / mostFarDistance;
-        var correction = Mathf.Lerp(topLineTrsf.position.y, 0, lerpValue);
-        var position = topLineTrsf.position;
-        position.y = correction;
-        topLineTrsf.position = position;
     }
 
 }
