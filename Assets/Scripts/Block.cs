@@ -7,13 +7,6 @@ using UnityEngine;
 
 public class Block : MonoBehaviour
 {
-    public float topOffset = -98f;
-    public float middleOffset = -82f;
-    public float bottomOffset = -66f;
-    public Transform topLineTrsf;
-    public Transform middleLineTrsf;
-    public Transform bottomLineTrsf;
-    public Transform playerTrsf;
     public Pocket[] pockets;
 
     private GameObject[] obstaclePrefabs;

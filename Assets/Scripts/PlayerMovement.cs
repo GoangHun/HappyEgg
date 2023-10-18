@@ -30,32 +30,26 @@ public class PlayerMovement : MonoBehaviour {
 		currentTransIndex = 1;
 	}
 
-    private void FixedUpdate() {
-		
-	}
-
 	private void Update()
 	{
-		Debug.Log(isJump);
-
 		if (!GameManager.Instance.IsGameover)
 		{
 			if (Input.GetMouseButtonDown(0))
-				playerInput.startPos = Input.mousePosition;
+			{
+                playerInput.startPos = Input.mousePosition;
+            }
 			if (Input.GetMouseButtonUp(0))
 			{
 				playerInput.endPos = Input.mousePosition;
-				if (swaipDistance > Vector3.Distance(playerInput.endPos, playerInput.startPos))
+				if (playerInput.startPos == Vector3.zero || swaipDistance > Vector3.Distance(playerInput.endPos, playerInput.startPos))
 					return;
 
 				var vec = playerInput.endPos - playerInput.startPos;
 				var vecX = Mathf.Abs(vec.x);
 				var vecY = Mathf.Abs(vec.y);
 
-				if (vecX > vecY)
+				if (!isJump && vecX > vecY)
 				{
-					if (isJump)
-						return;
 					if (ObstacleManager.Instance.IsMushroom)
 						vec.x = -vec.x;
 
@@ -72,15 +66,15 @@ public class PlayerMovement : MonoBehaviour {
 						Move();
 					}
 				}
-				else
+				else if (!isJump && vec.y > 0) 
 				{
-					if(!isJump)
-						Jump();
-				}
+                    Jump();
+                }
 			}
 
-			//test code
-			if (ObstacleManager.Instance.IsMushroom)
+            #region Test Code
+#if UNITY_EDITOR
+            if (ObstacleManager.Instance.IsMushroom)
 			{
 				if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
 				{
@@ -135,9 +129,10 @@ public class PlayerMovement : MonoBehaviour {
 					}
 				}
 			}
-			
-		}
-	}
+#endif
+            #endregion
+        }
+    }
 
 	private void Move() {
 		playerTransform.position = lineTransforms[currentTransIndex].position;
