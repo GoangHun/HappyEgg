@@ -11,7 +11,6 @@ public enum SceneMode
     None = -1,
     Title,
     Main,
-    Option,
 }
 
 public class TitleManager : MonoBehaviour
@@ -31,7 +30,6 @@ public class TitleManager : MonoBehaviour
 
     private TitleState title = new TitleState();
     private MainState main = new MainState();
-    private OptionState option = new OptionState();
 
     public static TitleManager Instance
     {
@@ -66,9 +64,7 @@ public class TitleManager : MonoBehaviour
         stage4Button.enabled = saveData.ClearStage4;
         stage5Button.enabled = saveData.ClearStage5;
 
-		//test code
-		currentState = main;
-        //SetResolution();
+		currentState = title;
     }
 
 
@@ -83,9 +79,6 @@ public class TitleManager : MonoBehaviour
                 break;
             case SceneMode.Main:
                 currentState = main;
-                break;
-            case SceneMode.Option:
-                currentState = option;
                 break;
             default:
                 currentState = null;
@@ -188,21 +181,4 @@ public class MainState : ISceneState
     }
 }
 
-public class OptionState : ISceneState
-{
-    public void Enter()
-    {
-        TitleManager.Instance.optionPanel.SetActive(true);
-    }
-
-    public void Execute()
-    {
-        // Option 상태에서 수행할 작업
-    }
-
-    public void Exit()
-    {
-        TitleManager.Instance.optionPanel.SetActive(false);
-    }
-}
 
