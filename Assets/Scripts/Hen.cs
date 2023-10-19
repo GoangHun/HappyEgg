@@ -53,10 +53,9 @@ public class Hen : Item
 		}
 		rushCollider.enabled = false;
 
-		var effect = Instantiate(destroyEffect, transform.position, Quaternion.identity);
+		var effect = Instantiate(destroyEffect, transform.position + new Vector3(0, -5f, 0), Quaternion.identity);
 		effect.Play();
 		Destroy(effect, 3f);
-
 		Destroy(gameObject);
 	}
 }

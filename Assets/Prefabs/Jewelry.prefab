@@ -177,3 +177,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 1000
   speed: 20
+  pickupEffect: {fileID: 6362618218194631907, guid: cd799f62aab418c4d8efed7992b9f568,
+    type: 3}

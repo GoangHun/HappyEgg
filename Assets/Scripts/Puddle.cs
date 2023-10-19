@@ -6,6 +6,7 @@ public class Puddle : Obstacle
 {
 	public float time = 5f;
 	public float speed = 9f;
+	public ParticleSystem debuffEffect;
 
 	public void OnTriggerEnter(Collider other)
 	{
@@ -13,6 +14,7 @@ public class Puddle : Obstacle
 		{
 			var player = other.GetComponent<Player>();
 			player.SpeedDeBuff(speed, time);
+			debuffEffect.Play();
 		}
 	}
 }
