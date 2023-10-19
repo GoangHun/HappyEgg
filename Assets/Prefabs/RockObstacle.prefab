@@ -151,3 +151,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  destoryEffect: {fileID: 4200481935313547596, guid: b05f280ffd591394db4135c5581f82a0,
+    type: 3}
+  destroySound: {fileID: 8300000, guid: 6f6c9b39436e5be488fc0eebfac64e5a, type: 3}

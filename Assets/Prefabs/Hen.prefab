@@ -791,6 +791,7 @@ MonoBehaviour:
   rushEffect: {fileID: 954749426115235316}
   destroyEffect: {fileID: 1574516568193800042, guid: e563edd5302ec2340a5bc06e57d1e901,
     type: 3}
+  howlingSound: {fileID: 8300000, guid: e088c28e6fb95e645bd57ba3582c3ef4, type: 3}
   durationTime: 3
   speed: 7
 --- !u!1 &6380143987013848357

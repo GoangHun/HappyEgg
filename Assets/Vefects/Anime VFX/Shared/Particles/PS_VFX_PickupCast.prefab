@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 229448119019832062}
   - component: {fileID: 4303440017469370445}
   - component: {fileID: 5471299995429864746}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PS_VFX_Add_DistoDonut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4897,7 +4897,7 @@ GameObject:
   - component: {fileID: 2092102555219681250}
   - component: {fileID: 2092102555219681248}
   - component: {fileID: 2092102555219681251}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PS_VFX_BombGlow2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9792,7 +9792,7 @@ GameObject:
   - component: {fileID: 2092102555451170860}
   - component: {fileID: 2092102555451170858}
   - component: {fileID: 2092102555451170861}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PS_VFX_BombGlow1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14687,7 +14687,7 @@ GameObject:
   - component: {fileID: 2092102555650494222}
   - component: {fileID: 2092102555650494220}
   - component: {fileID: 2092102555650494223}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PS_VFX_BombGlow3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19582,7 +19582,7 @@ GameObject:
   - component: {fileID: 2092102556642896163}
   - component: {fileID: 2092102556642896161}
   - component: {fileID: 2092102556642896160}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PS_VFX_Add_Ring1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24477,7 +24477,7 @@ GameObject:
   - component: {fileID: 2092102556928725138}
   - component: {fileID: 2092102556928725136}
   - component: {fileID: 2092102556928725139}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PS_VFX_Add_Rainbow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29372,7 +29372,7 @@ GameObject:
   - component: {fileID: 2092102557249803461}
   - component: {fileID: 2092102557249803459}
   - component: {fileID: 2092102557249803458}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PS_VFX_Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34285,7 +34285,7 @@ GameObject:
   - component: {fileID: 7369358336799485125}
   - component: {fileID: 6362618218194631907}
   - component: {fileID: 3107498401967008175}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PS_VFX_PickupCast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39050,7 +39050,7 @@ ParticleSystemRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4231482995727018640}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -39081,8 +39081,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -886354073
-  m_SortingLayer: -1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -39125,7 +39125,7 @@ GameObject:
   - component: {fileID: 7669448707635262254}
   - component: {fileID: 7669448707635262252}
   - component: {fileID: 7669448707635262253}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PS_VFX_Add_SecondGlowLarge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44020,7 +44020,7 @@ GameObject:
   - component: {fileID: 7669448708234576707}
   - component: {fileID: 7669448708234576705}
   - component: {fileID: 7669448708234576706}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PS_VFX_Add_Ring1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48915,7 +48915,7 @@ GameObject:
   - component: {fileID: 7669448708266135567}
   - component: {fileID: 7669448708266135565}
   - component: {fileID: 7669448708266135566}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PS_VFX_Add_StarMiddle1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53810,7 +53810,7 @@ GameObject:
   - component: {fileID: 7669448708318972910}
   - component: {fileID: 7669448708318972908}
   - component: {fileID: 7669448708318972909}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PS_VFX_Add_SecondGlowFlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58705,7 +58705,7 @@ GameObject:
   - component: {fileID: 7669448708526642111}
   - component: {fileID: 7669448708526642109}
   - component: {fileID: 7669448708526642110}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PS_VFX_Add_StarMiddle2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

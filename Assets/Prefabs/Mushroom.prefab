@@ -289,6 +289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   durationTime: 5
   destroyEffect: {fileID: 3583830966192486683}
+  actionSound: {fileID: 8300000, guid: a1fc79e4f1ccc3142ad9a185e3abeb17, type: 3}
 --- !u!1001 &3817743868658240453
 PrefabInstance:
   m_ObjectHideFlags: 0

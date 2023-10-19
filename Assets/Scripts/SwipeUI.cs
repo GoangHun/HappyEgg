@@ -20,6 +20,8 @@ public class SwipeUI : MonoBehaviour
     private float endTouchX;                    // 터치 종료 위치
     private bool isSwipeMode = false;       // 현재 Swipe가 되고 있는지 체크
 
+    public AudioClip swipeSound;
+
     private void Awake()
     {
         // 스크롤 되는 페이지의 각 value 값을 저장하는 배열 메모리 할당
@@ -120,7 +122,7 @@ public class SwipeUI : MonoBehaviour
         {
             // 원래 페이지로 Swipe해서 돌아간다
             StartCoroutine(OnSwipeOneStep(currentPage));
-            return;
+			return;
         }
 
         // Swipe 방향
@@ -144,10 +146,10 @@ public class SwipeUI : MonoBehaviour
             // 오른쪽으로 이동을 위해 현재 페이지를 1 증가
             currentPage++;
         }
-
-        // currentIndex번째 페이지로 Swipe해서 이동
-        StartCoroutine(OnSwipeOneStep(currentPage));
-    }
+		// currentIndex번째 페이지로 Swipe해서 이동
+		StartCoroutine(OnSwipeOneStep(currentPage));
+		AudioManager.instance.PlaySE(swipeSound);
+	}
 
     /// <summary>
     /// 페이지를 한 장 옆으로 넘기는 Swipe 효과 재생
@@ -160,7 +162,7 @@ public class SwipeUI : MonoBehaviour
 
         isSwipeMode = true;
 
-        while (percent < 1)
+		while (percent < 1)
         {
             current += Time.deltaTime;
             percent = current / swipeTime;
@@ -178,13 +180,15 @@ public class SwipeUI : MonoBehaviour
         if (currentPage == maxPage - 1) return;
         currentPage++;
         StartCoroutine(OnSwipeOneStep(currentPage));
-    }
+		AudioManager.instance.PlaySE(swipeSound);
+	}
 
     public void LeftSwipeButton()
     {
         if (currentPage == 0) return;
         currentPage--;
         StartCoroutine(OnSwipeOneStep(currentPage));
-    }
+		AudioManager.instance.PlaySE(swipeSound);
+	}
 
 }

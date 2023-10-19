@@ -6,7 +6,9 @@ public class ScoreItem : Item
 {
 	public int score = 1000;
 	public float speed = 10f;   //자석에 끌리는 속도
-	public ParticleSystem pickupEffect;
+	public GameObject pickupEffect;
+	public AudioClip pickupSound;
+
 	public bool IsMagnetic { get; set; } = false;
 
     private void OnTriggerEnter(Collider other)
@@ -31,6 +33,7 @@ public class ScoreItem : Item
 	{
 		GameManager.Instance.AddScore(score);
 		ItemManager.Instance.ScoreItems.Remove(this);
+		AudioManager.instance.PlaySE(pickupSound);
 		base.PickUpItem();
 	}
 

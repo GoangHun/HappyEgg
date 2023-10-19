@@ -6,6 +6,7 @@ public class Mushroom : Obstacle
 {
 	public float durationTime = 5f;
 	public ParticleSystem destroyEffect;
+	public AudioClip actionSound;
 
 	public void OnTriggerEnter(Collider other)
 	{
@@ -13,6 +14,7 @@ public class Mushroom : Obstacle
 		{
 			var player = other.GetComponent<Player>();
 			ObstacleManager.Instance.ActionMushroom(durationTime, player);
+			AudioManager.instance.PlaySE(actionSound);
 			destroyEffect.Play();
 		}
 	}

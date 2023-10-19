@@ -68,9 +68,11 @@ public class ObstacleManager : MonoBehaviour
     {
 		for (int i = Obstacles.Count - 1; i >= 0; i--)
 		{
-			if (Obstacles[i].name == "ShortBarrier(Clone)")
-				continue;
-			Obstacles[i].OnSmash();	
+            if (Obstacles[i].name == "RockObstacle(Clone)")
+            {
+                var rock = Obstacles[i] as Rock;
+                rock.OnSmash();
+            }
 		}
     }
 }

@@ -9,6 +9,7 @@ public class Hen : Item
 	public Collider rushCollider;
 	public ParticleSystem rushEffect;
 	public ParticleSystem destroyEffect;
+	public AudioClip howlingSound;
 
 	public float durationTime = 3f;
 	public float speed = 7f;
@@ -37,6 +38,7 @@ public class Hen : Item
 		ParentPocket = null;
 		transform.parent = ItemManager.Instance.conveyor.transform;
 		animator.SetTrigger("isFly");
+		AudioManager.instance.PlaySE(howlingSound);
 		StartCoroutine(RushCoroutine());
 		rushEffect.Play();
 	}

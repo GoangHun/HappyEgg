@@ -150,6 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 20
+  pickupSound: {fileID: 8300000, guid: e4a31854a36436443a843647f8665b92, type: 3}
 --- !u!111 &7154794749127273350
 Animation:
   m_ObjectHideFlags: 0

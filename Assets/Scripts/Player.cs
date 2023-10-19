@@ -70,10 +70,10 @@ public class Player : MonoBehaviour
 	public void OnDamage(float damage)
     {
         GameManager.Instance.SetTimer(-damage);
-        if (!IsHitEffect)
-        {
-			StartCoroutine(OnHitEffect());
-		}
+  //      if (!IsHitEffect)
+  //      {
+		//	StartCoroutine(OnHitEffect());
+		//}
     }
 
     //교체한 셰이더에 서페이스 옵션 노드가 없어서 사용불가

@@ -12,9 +12,9 @@ public class RollingPin : ShootingItem
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.CompareTag("Obstacle") && other.name != "ShortBarrier(Clone)")
+		if (other.name == "RockObstacle(Clone)")
 		{
-			other.GetComponent<Obstacle>().OnSmash();
+			other.GetComponent<Rock>().OnSmash();
 		}
 	}
 

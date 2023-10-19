@@ -182,6 +182,7 @@ public class GameManager : MonoBehaviour
         Pause();
 		Save();
 		UIManager.Instance.EndGame();
+        AudioManager.instance.StopBGM();
     }
 
     public void QuitGame()
