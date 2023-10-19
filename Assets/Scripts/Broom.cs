@@ -12,11 +12,12 @@ public class Broom : ShootingItem
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.CompareTag("Obstacle") && other.name != "ShortBarrier(Clone)")
-		{
-			other.GetComponent<Obstacle>().OnSmash();
-		}
-	}
+
+        if (other.name == "RockObstacle(Clone)")
+        {
+            other.GetComponent<Rock>().OnSmash();
+        }
+    }
 
 	private void Awake()
 	{

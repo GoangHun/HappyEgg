@@ -5,7 +5,7 @@ using static UnityEngine.ParticleSystem;
 
 public class RollingPin : ShootingItem
 {
-	public float time = 5f;
+	public float time = 3f;
 	public ParticleSystem particle;
 
 	private Animator animator;

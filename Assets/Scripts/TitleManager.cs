@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.AdaptivePerformance.VisualScripting;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using SaveDataVC = SaveDataV1;
@@ -15,11 +16,11 @@ public enum SceneMode
 
 public class TitleManager : MonoBehaviour
 {
+    public GameObject fpsUI;
     public GameObject titlePanel;
     public GameObject mainPanel;
     public GameObject optionPanel;
 
-    public Button stage1Button;
 	public Button stage2Button;
 	public Button stage3Button;
 	public Button stage4Button;
@@ -67,15 +68,17 @@ public class TitleManager : MonoBehaviour
     private void Start()
     {
         var saveData = SaveLoadSystem.Load("saveData.json") as SaveDataVC;
-
-        stage2Button.enabled = saveData.ClearStage2;
-        stage2Rock.SetActive(!saveData.ClearStage2);
-        stage3Button.enabled = saveData.ClearStage3;
-		stage3Rock.SetActive(!saveData.ClearStage2);
-		stage4Button.enabled = saveData.ClearStage4;
-		stage4Rock.SetActive(!saveData.ClearStage2);
-		stage5Button.enabled = saveData.ClearStage5;
-		stage5Rock.SetActive(!saveData.ClearStage2);
+        if (saveData != null)
+        {
+            stage2Button.enabled = saveData.ClearStage2;
+            stage2Rock.SetActive(!saveData.ClearStage2);
+            stage3Button.enabled = saveData.ClearStage3;
+            stage3Rock.SetActive(!saveData.ClearStage3);
+            stage4Button.enabled = saveData.ClearStage4;
+            stage4Rock.SetActive(!saveData.ClearStage4);
+            stage5Button.enabled = saveData.ClearStage5;
+            stage5Rock.SetActive(!saveData.ClearStage5);
+        }
 
 		currentState = title;
         AudioManager.instance.PlayBGM(titleBgm);
@@ -105,6 +108,9 @@ public class TitleManager : MonoBehaviour
     public void Update()
     {
         currentState?.Execute(); // 현재 상태에서 수행할 작업
+
+        if (Input.GetKeyDown(KeyCode.F1))
+            fpsUI.SetActive(!fpsUI.activeSelf);
     }
 
     public void SceneLoad(int num)

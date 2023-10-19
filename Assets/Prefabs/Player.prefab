@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ed37ce9fb8f1241996fbe4c295f7c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpSound: {fileID: 8300000, guid: ed809ea3b398eeb40a9ffce286d5c0d3, type: 3}
   lineTransforms:
   - {fileID: 0}
   - {fileID: 0}
@@ -139,11 +140,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e570bd0c367d1f04fad99648c18fcf5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootingSound: {fileID: 8300000, guid: 8b20a7fd3345ebf498edb63a327ecf31, type: 3}
   conveyor: {fileID: 0}
   buffEffect: {fileID: 0}
   confusionEffect: {fileID: 5062809481368553339}
   hitEffectTime: 1
-  shootingCoolTime: 1
+  shootingCoolTime: 30
   shootingSpeed: 20
   shootingSpeedUpTime: 5
 --- !u!1001 &1746486093378138616

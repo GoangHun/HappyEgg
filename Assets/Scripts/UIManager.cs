@@ -16,6 +16,8 @@ public class UIManager : MonoBehaviour
     public GameObject countTextGO;
 	public GameObject shootSelect;
 	public GameObject winPopup;
+	public GameObject fpsUI;
+	public GameObject shootButton;
     public Image timerProgressImage;
 
     public float countTime = 3f;
@@ -46,6 +48,12 @@ public class UIManager : MonoBehaviour
 		}
     }
 
+    private void Update()
+    {
+		if (Input.GetKeyDown(KeyCode.F1))
+			fpsUI.SetActive(!fpsUI.activeSelf);
+    }
+
     public void UpdateTimerProgress(float time) 
 	{
         timerProgressImage.fillAmount = time;
@@ -58,7 +66,8 @@ public class UIManager : MonoBehaviour
 			winPopup.SetActive(true);
 			ItemManager.Instance.LastRezenTimerUpdate();
 			ObstacleManager.Instance.LastRezenTimeUpdate();
-		}
+            GameManager.Instance.Save();
+        }
 		else
 		{
 			GameManager.Instance.Restart();
@@ -69,7 +78,9 @@ public class UIManager : MonoBehaviour
 	{
         gameEndUI.SetActive(true);
         pauseButton.SetActive(false);
-		if (timerProgress != null)
+        shootButton.SetActive(false);
+
+        if (timerProgress != null)
 			timerProgress.SetActive(false);
     }
 

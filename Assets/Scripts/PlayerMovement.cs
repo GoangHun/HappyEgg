@@ -4,6 +4,7 @@ using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour {
 
+	public AudioClip jumpSound;
 	public Transform[] lineTransforms;
 	public float jumpForce = 200f;
 	public float swaipDistance;
@@ -142,6 +143,7 @@ public class PlayerMovement : MonoBehaviour {
 	{
 		rgd.velocity = Vector3.zero;
 		rgd.AddForce(Vector2.up * jumpForce);
+		AudioManager.instance.PlaySE(jumpSound);
 		isJump = true;
 	}
 }

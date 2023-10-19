@@ -180,7 +180,7 @@ public class GameManager : MonoBehaviour
     {
         IsGameover = true;
         Pause();
-		Save();
+		//Save();
 		UIManager.Instance.EndGame();
         AudioManager.instance.StopBGM();
     }

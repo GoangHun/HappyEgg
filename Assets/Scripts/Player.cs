@@ -4,13 +4,16 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public AudioClip shootingSound;
 	private Pocket ShootingItemPocket;
     public Conveyor conveyor;
     public ParticleSystem buffEffect;
 	public ParticleSystem confusionEffect;
+    public Slider shootingSlider;
 
 	public float hitEffectTime = 1f;
     public float shootingCoolTime = 30f;
@@ -42,19 +45,21 @@ public class Player : MonoBehaviour
 	{
         if (!GameManager.Instance.IsGameover)
         {
-            if ( playerInput.DoubleClick || Input.GetKeyDown(KeyCode.Space) && lastShootingTime + shootingCoolTime < Time.time)
+            if ( (playerInput.DoubleClick || Input.GetKeyDown(KeyCode.Space)) && lastShootingTime + shootingCoolTime < Time.time)
             {
-				lastShootingTime = Time.time;
+                lastShootingTime = Time.time;
 				for (int i = 0; i < currentShootingItem.Count; i++)
 				{
 					currentShootingItem[i].gameObject.SetActive(true);
 					currentShootingItem[i].Action();
 					buffEffect.Play();
 					SpeedBuff(shootingSpeed, shootingSpeedUpTime);
+                    AudioManager.instance.PlaySE(shootingSound);
 				}
 			}   
         }
 
+        ShootingSliderUpdate();
 
         //test code
         {
@@ -64,6 +69,22 @@ public class Player : MonoBehaviour
                 SetRollingPin();
             if (Input.GetKeyDown(KeyCode.Alpha3))
                 SetBroom();
+        }
+    }
+
+    public void ShootingButton()
+    {
+        if (lastShootingTime + shootingCoolTime < Time.time)
+        {
+            lastShootingTime = Time.time;
+            for (int i = 0; i < currentShootingItem.Count; i++)
+            {
+                currentShootingItem[i].gameObject.SetActive(true);
+                currentShootingItem[i].Action();
+                buffEffect.Play();
+                SpeedBuff(shootingSpeed, shootingSpeedUpTime);
+                AudioManager.instance.PlaySE(shootingSound);
+            }
         }
     }
 
@@ -97,8 +118,11 @@ public class Player : MonoBehaviour
         IsHitEffect = false;
     }
 	
-
-	public void SetToyHammer()
+    public void ShootingSliderUpdate()
+    {
+        shootingSlider.value = (Time.time - lastShootingTime) / shootingCoolTime;
+    }
+    public void SetToyHammer()
     {
         currentShootingItem.Clear();
 		currentShootingItem.Add(ItemManager.Instance.shootingItems[0].GetComponent<ToyHammer>());
