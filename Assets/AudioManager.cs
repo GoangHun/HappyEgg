@@ -1,13 +1,17 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Audio;
+using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
 	public static AudioManager instance;
 	public AudioMixer audioMixer;
 
-	
+	public Slider bgmSlider;
+	public Slider seSlider;
+
 	private AudioSource bgmSource;
 	private List<AudioSource> seSources;
 
@@ -27,8 +31,19 @@ public class AudioManager : MonoBehaviour
 		bgmSource = GetComponent<AudioSource>();
 	}
 
-	// BGM 재생
-	public void PlayBGM(AudioClip clip)
+    private void Start()
+    {
+        // 게임 시작 시 저장된 볼륨값 불러오기 (기본값은 1)
+        float bgmVolume = PlayerPrefs.GetFloat("BGMVolume", 1f);
+        float sevolume = PlayerPrefs.GetFloat("SEVolume", 1f);
+        BGMVolume(bgmVolume);
+		SEVolume(sevolume);
+        bgmSlider.value = bgmVolume;
+		seSlider.value = sevolume;
+    }
+
+    // BGM 재생
+    public void PlayBGM(AudioClip clip)
 	{
 		bgmSource.clip = clip;
 		bgmSource.Play();
@@ -72,12 +87,19 @@ public class AudioManager : MonoBehaviour
 	public void BGMVolume(float volume)
 	{
 		audioMixer.SetFloat("BGM", Mathf.Log10(volume) * 20f);
-	}
+        PlayerPrefs.SetFloat("BGMVolume", volume);
+        PlayerPrefs.Save();
+
+    }
 
 	public void SEVolume(float volume)
 	{
 		audioMixer.SetFloat("SE", Mathf.Log10(volume) * 20f);
-	}
+        PlayerPrefs.SetFloat("SEVolume", volume);
+        PlayerPrefs.Save();
+    }
+
+
 
 }
 

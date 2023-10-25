@@ -288,8 +288,8 @@ RectTransform:
   - {fileID: 780709320}
   - {fileID: 1353983281}
   - {fileID: 167402244}
-  - {fileID: 1502339833}
   - {fileID: 263305127}
+  - {fileID: 1502339833}
   - {fileID: 233280185}
   - {fileID: 1068514668}
   - {fileID: 124395550}
@@ -3326,6 +3326,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 120730003}
     m_Modifications:
+    - target: {fileID: 1608271318743130427, guid: 922c8eca284d92648b294904f2c8c86f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1608271318743130427, guid: 922c8eca284d92648b294904f2c8c86f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -150
+      objectReference: {fileID: 0}
     - target: {fileID: 2194482483900986939, guid: 922c8eca284d92648b294904f2c8c86f,
         type: 3}
       propertyPath: m_Pivot.x
@@ -4303,7 +4313,7 @@ PrefabInstance:
     - target: {fileID: 1156914249720223245, guid: 9355d4de3f0a3cf4a88f34503683647c,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -25
+      value: -65
       objectReference: {fileID: 0}
     - target: {fileID: 1156914249720223245, guid: 9355d4de3f0a3cf4a88f34503683647c,
         type: 3}
