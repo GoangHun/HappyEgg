@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEditor;
 using SaveDataVC = SaveDataV1;
+using UnityEngine.UI;
 
 public enum Stage
 {
@@ -22,13 +23,15 @@ public class GameManager : MonoBehaviour
 {
 	public Player player;
 	public float playTime = 180f;
-	private float playTimer;
 
+    public FadeInOut fadeInOut;
+
+	private float playTimer;
 	public Stage currentStage = Stage.None;
 	public int Score { get; private set; } = 0;
-	public int RandomStageLevel { get; set; } = 1;  //도전 모드에서 사용할 가변 난이도 레벨
+	public int RandomStageLevel { get; set; } = 1;  //도전 모드에서 사용할 가변 난이도 레벨에 사용
 	public bool IsGameover { get; private set; } = true;
-	public bool IsPause { get; private set; }
+    public bool IsPause { get; private set; } = false;
 	//public Dictionary<int, int> StageInfo { get; private set; } = new Dictionary<int, int>(); //스테이지 넘버, 장애물 생성 개수
 
 	private StageInfo stageInfo;
@@ -46,7 +49,6 @@ public class GameManager : MonoBehaviour
         }
     }
     
-
     private void Awake()
     {
         if (instance != null)
@@ -200,44 +202,52 @@ public class GameManager : MonoBehaviour
         StartGame();
 	}
 
-    public void SceneLoad(int num)
+    public void StartLoadScene(int num)
     {
+        fadeInOut.StartFadeOut();
+        StartCoroutine(LoadScene(num));
+    }
+
+    public IEnumerator LoadScene(int num)
+    {
+        while (fadeInOut.isFading)
+            yield return null;
+
         switch (num)
         {
             case 0:
                 SceneManager.LoadScene("Stage1");
-                currentStage = Stage.One;
+                //currentStage = Stage.One;
                 break;
             case 1:
                 SceneManager.LoadScene("Stage2");
-                currentStage = Stage.Two;
+                //currentStage = Stage.Two;
                 break;
             case 2:
                 SceneManager.LoadScene("Stage3");
-                currentStage = Stage.Three;
+                //currentStage = Stage.Three;
                 break;
             case 3:
                 SceneManager.LoadScene("Stage4");
-                currentStage = Stage.Four;
+                //currentStage = Stage.Four;
                 break;
             case 4:
                 SceneManager.LoadScene("Stage5");
-                currentStage = Stage.Five;
+                //currentStage = Stage.Five;
                 break;
             case 5:
                 SceneManager.LoadScene("ChallengeStage");
-                currentStage = Stage.Challenge;
+                //currentStage = Stage.Challenge;
                 break;
             case 6:
                 SceneManager.LoadScene("SpecialStage");
-                currentStage = Stage.Special;
+                //currentStage = Stage.Special;
                 break;
             default:
-				//LoadScene는 다음 프레임에 동작하기 때문에 남은 코드들 모두 실행함.
-				SceneManager.LoadScene("TitleScene");   
-                currentStage = Stage.None;
-				IsGameover = true;
-				Play();
+                //LoadScene는 다음 프레임에 동작하기 때문에 남은 코드들 모두 실행함.
+                SceneManager.LoadScene("TitleScene");
+                //currentStage = Stage.None;
+                Play();
                 break;
         }
     }

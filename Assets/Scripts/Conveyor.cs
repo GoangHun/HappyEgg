@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static Unity.Collections.AllocatorManager;
-using static UnityEngine.GraphicsBuffer;
 using GM = GameManager;
 
 public class Conveyor : MonoBehaviour
@@ -37,6 +35,8 @@ public class Conveyor : MonoBehaviour
 
 	void Update()
 	{
+		if (GM.Instance.IsGameover)
+			return;
 		foreach (var block in blocks)
 		{
 			block.transform.position += Vector3.back * speed * Time.deltaTime;

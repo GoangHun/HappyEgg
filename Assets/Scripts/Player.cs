@@ -38,38 +38,26 @@ public class Player : MonoBehaviour
 	private void Start()
 	{
         lastShootingTime = -shootingCoolTime;
-        SetBroom();
 	}
 
 	private void Update()
 	{
-        if (!GameManager.Instance.IsGameover)
+        if (GameManager.Instance.IsGameover)
+            return;
+
+        if ((playerInput.DoubleClick || Input.GetKeyDown(KeyCode.Space)) && lastShootingTime + shootingCoolTime < Time.time)
         {
-            if ( (playerInput.DoubleClick || Input.GetKeyDown(KeyCode.Space)) && lastShootingTime + shootingCoolTime < Time.time)
+            lastShootingTime = Time.time;
+            for (int i = 0; i < currentShootingItem.Count; i++)
             {
-                lastShootingTime = Time.time;
-				for (int i = 0; i < currentShootingItem.Count; i++)
-				{
-					currentShootingItem[i].gameObject.SetActive(true);
-					currentShootingItem[i].Action();
-					buffEffect.Play();
-					SpeedBuff(shootingSpeed, shootingSpeedUpTime);
-                    AudioManager.instance.PlaySE(shootingSound);
-				}
-			}   
+                currentShootingItem[i].gameObject.SetActive(true);
+                currentShootingItem[i].Action();
+                buffEffect.Play();
+                SpeedBuff(shootingSpeed, shootingSpeedUpTime);
+                AudioManager.instance.PlaySE(shootingSound);
+            }
         }
-
         ShootingSliderUpdate();
-
-        //test code
-        {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-                SetToyHammer();
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-                SetRollingPin();
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-                SetBroom();
-        }
     }
 
     public void ShootingButton()
@@ -91,10 +79,6 @@ public class Player : MonoBehaviour
 	public void OnDamage(float damage)
     {
         GameManager.Instance.SetTimer(-damage);
-  //      if (!IsHitEffect)
-  //      {
-		//	StartCoroutine(OnHitEffect());
-		//}
     }
 
     //교체한 셰이더에 서페이스 옵션 노드가 없어서 사용불가
@@ -132,14 +116,14 @@ public class Player : MonoBehaviour
     {
 		currentShootingItem.Clear();
 		currentShootingItem.Add(ItemManager.Instance.shootingItems[1].GetComponent<RollingPin>());
-	}
+    }
 
 	public void SetBroom()
     {
 		currentShootingItem.Clear();
 		currentShootingItem.Add(ItemManager.Instance.shootingItems[2].GetComponent<Broom>());
 		currentShootingItem.Add(ItemManager.Instance.shootingItems[3].GetComponent<Broom>());
-	}
+    }
 
     public void SpeedBuff(float speed, float time)
     {

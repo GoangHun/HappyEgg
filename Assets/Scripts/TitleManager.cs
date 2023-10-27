@@ -35,7 +35,9 @@ public class TitleManager : MonoBehaviour
     public AudioClip titleButtonSound;
     public AudioClip mainBgm;
 
-	private static TitleManager instance;
+    public FadeInOut fadeInOut;
+
+    private static TitleManager instance;
     private ISceneState currentState;
 
     private TitleState title = new TitleState();
@@ -109,12 +111,28 @@ public class TitleManager : MonoBehaviour
     {
         currentState?.Execute(); // 현재 상태에서 수행할 작업
 
-        if (Input.GetKeyDown(KeyCode.F1))
+
+#if UNITY_EDITOR
+            if (Input.GetKeyDown(KeyCode.Alpha9) || (Input.touchCount == 3 && Input.GetTouch(2).phase == TouchPhase.Began))
             fpsUI.SetActive(!fpsUI.activeSelf);
+#elif UNITY_ANDROID
+        if (Input.touchCount == 3 && Input.GetTouch(2).phase == TouchPhase.Began)
+            fpsUI.SetActive(!fpsUI.activeSelf);
+#endif
+
     }
 
-    public void SceneLoad(int num)
+    public void StartLoadScene(int num)
     {
+        fadeInOut.StartFadeOut();
+        StartCoroutine(LoadScene(num));
+    }
+
+    public IEnumerator LoadScene(int num)
+    {
+        while (fadeInOut.isFading)
+            yield return null;
+
         switch (num)
         {
             case 0:
@@ -148,7 +166,6 @@ public class TitleManager : MonoBehaviour
 
         Screen.SetResolution(setWidth, setHeight, false);
     }
-
 }
 
 public interface ISceneState
@@ -195,7 +212,6 @@ public class MainState : ISceneState
 
 	public void Execute()
     {
-        // Main 상태에서 수행할 작업
     }
 
     public void Exit()

@@ -32,10 +32,6 @@ public class Block : MonoBehaviour
         keys = new List<string>(itemRezenInfos.Keys);
     }
 
-    private void FixedUpdate()
-    {
-        //UpdateLinePos();
-    }
 
     public void CreateTotalObstacles()
     {

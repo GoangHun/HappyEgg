@@ -50,8 +50,13 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-		if (Input.GetKeyDown(KeyCode.F1))
-			fpsUI.SetActive(!fpsUI.activeSelf);
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.Alpha9) || (Input.touchCount == 3 && Input.GetTouch(2).phase == TouchPhase.Began))
+            fpsUI.SetActive(!fpsUI.activeSelf);
+#elif UNITY_ANDROID
+        if (Input.touchCount == 3 && Input.GetTouch(2).phase == TouchPhase.Began)
+            fpsUI.SetActive(!fpsUI.activeSelf);
+#endif
     }
 
     public void UpdateTimerProgress(float time) 
