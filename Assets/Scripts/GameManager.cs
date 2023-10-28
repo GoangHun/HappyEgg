@@ -117,6 +117,16 @@ public class GameManager : MonoBehaviour
 
     private void SpecialSgateUpdate()
     {
+        if (!IsGameover)
+        {
+            playTimer -= Time.deltaTime;
+            UIManager.Instance.UpdateTimerProgress(playTimer / playTime);
+
+            if (playTimer < 0)
+            {
+                EndGame();
+            }
+        }
     }
 
     public void AddScore(int score)

@@ -181,15 +181,15 @@ public class Block : MonoBehaviour
             if (pocket.ChildGo == null)
                 continue;
 
-            if (pocket.ChildGo.CompareTag("Item"))
-            {
-                var item = pocket.ChildGo.GetComponent<Item>();
-                item.OnSmash();
-            }
-            else if (pocket.ChildGo.CompareTag("Obstacle"))
+            if (pocket.ChildGo.CompareTag("Obstacle"))
             {
                 var obstacle = pocket.ChildGo.GetComponent<Obstacle>();
                 obstacle.OnSmash();
+            }
+            else
+            {
+                var item = pocket.ChildGo.GetComponent<Item>();
+                item.OnSmash();
             }
         }
         isUsePocketCount = 0;
@@ -212,7 +212,6 @@ public class Block : MonoBehaviour
 
 				int index = i * 3 + j;
                 var go = Instantiate(pref[j], pockets[index].transform.position, Quaternion.identity);
-                Debug.Log(index);
 				pockets[index].ChildGo = go;
 
 				if (go.CompareTag("Item"))
@@ -224,15 +223,18 @@ public class Block : MonoBehaviour
 				}
                 else if (pockets[index].ChildGo.CompareTag("Obstacle"))
                 {
-					var obstacle = go.GetComponent<Obstacle>();
-					obstacle.SetPocket(pockets[index]);
-					isUsePocketCount++;
+                    var obstacle = go.GetComponent<Obstacle>();
+                    obstacle.SetPocket(pockets[index]);
+                    ObstacleManager.Instance.Obstacles.Add(obstacle);
+                    isUsePocketCount++;
 				}
-                else
+                else if (go.CompareTag("ScoreItem"))
                 {
-					var scoreItem = go.GetComponent<ScoreItem>();
-					scoreItem.SetPocket(pockets[index]);
-					isUsePocketCount++;
+                    var scoreItemComp = go.GetComponent<ScoreItem>();
+                    ItemManager.Instance.ScoreItems.Add(scoreItemComp);
+                    scoreItemComp.SetPocket(pockets[index]);
+                    scoreItemComp.IsMagnetic = ItemManager.Instance.IsMagnetic;
+                    isUsePocketCount++;
 				}
 			}
 		}
