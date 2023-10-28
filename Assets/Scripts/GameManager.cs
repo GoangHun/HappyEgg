@@ -182,7 +182,6 @@ public class GameManager : MonoBehaviour
     {
         IsGameover = true;
         Pause();
-		//Save();
 		UIManager.Instance.EndGame();
         AudioManager.instance.StopBGM();
     }
