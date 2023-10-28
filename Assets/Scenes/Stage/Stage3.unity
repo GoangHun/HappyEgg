@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.19024955, g: 0.5923857, b: 0.77175003, a: 1}
+  m_IndirectSpecularColor: {r: 0.19198903, g: 0.59465885, b: 0.7773138, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -511,7 +511,7 @@ PrefabInstance:
     - target: {fileID: 667905923937151953, guid: 61a89d2ce1596f9408ab0ae75125ccaa,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 667905923937151953, guid: 61a89d2ce1596f9408ab0ae75125ccaa,
         type: 3}
@@ -541,7 +541,7 @@ PrefabInstance:
     - target: {fileID: 667905923937151953, guid: 61a89d2ce1596f9408ab0ae75125ccaa,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SceneLoad
+      value: StartLoadScene
       objectReference: {fileID: 0}
     - target: {fileID: 667905923937151953, guid: 61a89d2ce1596f9408ab0ae75125ccaa,
         type: 3}
@@ -562,6 +562,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 667905923937151953, guid: 61a89d2ce1596f9408ab0ae75125ccaa,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Stage4
       objectReference: {fileID: 0}
     - target: {fileID: 667905923937151953, guid: 61a89d2ce1596f9408ab0ae75125ccaa,
         type: 3}
@@ -601,7 +606,7 @@ PrefabInstance:
     - target: {fileID: 5668359198016753200, guid: 61a89d2ce1596f9408ab0ae75125ccaa,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5668359198016753200, guid: 61a89d2ce1596f9408ab0ae75125ccaa,
         type: 3}
@@ -631,7 +636,7 @@ PrefabInstance:
     - target: {fileID: 5668359198016753200, guid: 61a89d2ce1596f9408ab0ae75125ccaa,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SceneLoad
+      value: StartLoadScene
       objectReference: {fileID: 0}
     - target: {fileID: 5668359198016753200, guid: 61a89d2ce1596f9408ab0ae75125ccaa,
         type: 3}
@@ -652,6 +657,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5668359198016753200, guid: 61a89d2ce1596f9408ab0ae75125ccaa,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: TitleScene
       objectReference: {fileID: 0}
     - target: {fileID: 5668359198016753200, guid: 61a89d2ce1596f9408ab0ae75125ccaa,
         type: 3}
@@ -2261,7 +2271,7 @@ PrefabInstance:
     - target: {fileID: 6966154228094810782, guid: 0d033cb349893ee49976acd56fe52d0a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6966154228094810782, guid: 0d033cb349893ee49976acd56fe52d0a,
         type: 3}
@@ -2317,6 +2327,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6966154228094810782, guid: 0d033cb349893ee49976acd56fe52d0a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: TitleScene
       objectReference: {fileID: 0}
     - target: {fileID: 6966154228094810782, guid: 0d033cb349893ee49976acd56fe52d0a,
         type: 3}
@@ -3629,6 +3644,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8119041933187323718, guid: 922c8eca284d92648b294904f2c8c86f,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8119041933187323718, guid: 922c8eca284d92648b294904f2c8c86f,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 2
       objectReference: {fileID: 0}
@@ -3649,6 +3669,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8119041933187323718, guid: 922c8eca284d92648b294904f2c8c86f,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartLoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 8119041933187323718, guid: 922c8eca284d92648b294904f2c8c86f,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: PlaySE
       objectReference: {fileID: 0}
@@ -3661,6 +3686,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8119041933187323718, guid: 922c8eca284d92648b294904f2c8c86f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: TitleScene
       objectReference: {fileID: 0}
     - target: {fileID: 8119041933187323718, guid: 922c8eca284d92648b294904f2c8c86f,
         type: 3}

@@ -47,17 +47,17 @@ public class Conveyor : MonoBehaviour
     {
         switch (GM.Instance.currentStage)
         {
-            case Stage.Challenge:
+            case Scene.ChallengeStage:
                 // Challenge 상태에서의 업데이트 동작
                 break;
-            case Stage.Special:
+            case Scene.SpecialStage:
 				SpecialStageOnTrigger(target);
                 break;
-            case Stage.One:
-            case Stage.Two:
-            case Stage.Three:
-            case Stage.Four:
-            case Stage.Five:
+            case Scene.Stage1:
+            case Scene.Stage2:
+            case Scene.Stage3:
+            case Scene.Stage4:
+            case Scene.Stage5:
                 NomalStageOnTrigger(target);
                 break;
         }

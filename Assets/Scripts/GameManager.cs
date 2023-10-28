@@ -7,16 +7,17 @@ using UnityEditor;
 using SaveDataVC = SaveDataV1;
 using UnityEngine.UI;
 
-public enum Stage
+public enum Scene
 {
     None = -1,
-    One = 1,
-    Two,
-    Three,
-    Four,
-    Five,
-    Challenge,
-    Special,
+    Stage1 = 1,
+    Stage2,
+    Stage3,
+    Stage4,
+    Stage5,
+    ChallengeStage,
+    SpecialStage,
+    TitleScene,
 }
 
 public class GameManager : MonoBehaviour
@@ -27,7 +28,7 @@ public class GameManager : MonoBehaviour
     public FadeInOut fadeInOut;
 
 	private float playTimer;
-	public Stage currentStage = Stage.None;
+	public Scene currentStage = Scene.None;
 	public int Score { get; private set; } = 0;
 	public int RandomStageLevel { get; set; } = 1;  //도전 모드에서 사용할 가변 난이도 레벨에 사용
 	public bool IsGameover { get; private set; } = true;
@@ -84,17 +85,17 @@ public class GameManager : MonoBehaviour
     {
         switch (currentStage)
         {
-            case Stage.Challenge:
+            case Scene.ChallengeStage:
                 // Challenge 상태에서의 업데이트 동작
                 break;
-            case Stage.Special:
+            case Scene.SpecialStage:
                 SpecialSgateUpdate();
                 break;
-            case Stage.One:
-            case Stage.Two:
-            case Stage.Three:
-            case Stage.Four:
-            case Stage.Five:
+            case Scene.Stage1:
+            case Scene.Stage2:
+            case Scene.Stage3:
+            case Scene.Stage4:
+            case Scene.Stage5:
                 NomalStageUpdate();
                 break;
         }
@@ -201,53 +202,17 @@ public class GameManager : MonoBehaviour
         StartGame();
 	}
 
-    public void StartLoadScene(int num)
+    public void StartLoadScene(string name)
     {
         fadeInOut.StartFadeOut();
-        StartCoroutine(LoadScene(num));
+        StartCoroutine(LoadScene(name));
     }
 
-    public IEnumerator LoadScene(int num)
+    public IEnumerator LoadScene(string name)
     {
         while (fadeInOut.isFading)
             yield return null;
-
-        switch (num)
-        {
-            case 0:
-                SceneManager.LoadScene("Stage1");
-                //currentStage = Stage.One;
-                break;
-            case 1:
-                SceneManager.LoadScene("Stage2");
-                //currentStage = Stage.Two;
-                break;
-            case 2:
-                SceneManager.LoadScene("Stage3");
-                //currentStage = Stage.Three;
-                break;
-            case 3:
-                SceneManager.LoadScene("Stage4");
-                //currentStage = Stage.Four;
-                break;
-            case 4:
-                SceneManager.LoadScene("Stage5");
-                //currentStage = Stage.Five;
-                break;
-            case 5:
-                SceneManager.LoadScene("ChallengeStage");
-                //currentStage = Stage.Challenge;
-                break;
-            case 6:
-                SceneManager.LoadScene("SpecialStage");
-                //currentStage = Stage.Special;
-                break;
-            default:
-                //LoadScene는 다음 프레임에 동작하기 때문에 남은 코드들 모두 실행함.
-                SceneManager.LoadScene("TitleScene");
-                //currentStage = Stage.None;
-                Play();
-                break;
-        }
+       
+        SceneManager.LoadScene(name);
     }
 }

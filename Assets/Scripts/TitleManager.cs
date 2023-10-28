@@ -84,6 +84,7 @@ public class TitleManager : MonoBehaviour
 
 		currentState = title;
         AudioManager.instance.PlayBGM(titleBgm);
+        Time.timeScale = 1.0f;
 	}
 
 
@@ -122,41 +123,18 @@ public class TitleManager : MonoBehaviour
 
     }
 
-    public void StartLoadScene(int num)
+    public void StartLoadScene(string name)
     {
         fadeInOut.StartFadeOut();
-        StartCoroutine(LoadScene(num));
+        StartCoroutine(LoadScene(name));
     }
 
-    public IEnumerator LoadScene(int num)
+    public IEnumerator LoadScene(string name)
     {
         while (fadeInOut.isFading)
             yield return null;
 
-        switch (num)
-        {
-            case 0:
-                SceneManager.LoadScene("Stage1");
-            break;
-            case 1:
-                SceneManager.LoadScene("Stage2");
-            break;
-            case 2:
-                SceneManager.LoadScene("Stage3");
-            break;
-            case 3:
-                SceneManager.LoadScene("Stage4");
-            break;
-            case 4:
-                SceneManager.LoadScene("Stage5");
-            break;
-            case 5:
-                SceneManager.LoadScene("ChallengeStage");
-            break;  
-            case 6:
-                SceneManager.LoadScene("SpecialStage");
-            break;   
-        }
+        SceneManager.LoadScene(name);
     }
 
     public void SetResolution()
