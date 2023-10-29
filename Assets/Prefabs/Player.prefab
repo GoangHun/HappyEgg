@@ -30,8 +30,8 @@ Transform:
   m_GameObject: {fileID: 3003331444227131624}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -6.5}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalPosition: {x: 0, y: 0, z: -6.7}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6522071633291205832}
@@ -144,6 +144,7 @@ MonoBehaviour:
   conveyor: {fileID: 0}
   buffEffect: {fileID: 0}
   confusionEffect: {fileID: 5062809481368553339}
+  shootingSlider: {fileID: 0}
   hitEffectTime: 1
   shootingCoolTime: 30
   shootingSpeed: 20

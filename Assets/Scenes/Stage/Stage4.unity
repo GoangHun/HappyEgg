@@ -2372,7 +2372,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.33027947, y: -0, z: -0, w: 0.94388324}
-  m_LocalPosition: {x: 0, y: 9.73, z: -11.74}
+  m_LocalPosition: {x: 0, y: 8.609, z: -12.696}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2618,10 +2618,10 @@ MonoBehaviour:
   - {fileID: 4804363926049137551, guid: 6ee97b42ddc30d244a1eb7051ab4a261, type: 3}
   mushroomPrefab: {fileID: 8519497596766631168, guid: d0ec07d9b9d0cdc4a9b86e36005dbcb9,
     type: 3}
-  rockCount: 2
+  rockCount: 1
   puddleCount: 1
   barricadeCount: 1
-  mushroomRezenDuration: 10
+  mushroomRezenDuration: 20
   mushroomLastRezenTime: 0
 --- !u!114 &1022174639
 MonoBehaviour:
@@ -2635,7 +2635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba6ed34c338e3dd40b75a9ecce8cd42a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearScore: 300000
+  clearScore: 250000
 --- !u!1001 &1068514667
 PrefabInstance:
   m_ObjectHideFlags: 0
