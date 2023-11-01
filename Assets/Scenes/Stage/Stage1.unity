@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.19198903, g: 0.59465885, b: 0.7773138, a: 1}
+  m_IndirectSpecularColor: {r: 0.19024955, g: 0.5923857, b: 0.77175003, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2719,10 +2719,10 @@ MonoBehaviour:
   - {fileID: 8039872794254532310, guid: 7bcc2885e9f67024cb141a1aa65e517f, type: 3}
   mushroomPrefab: {fileID: 8519497596766631168, guid: d0ec07d9b9d0cdc4a9b86e36005dbcb9,
     type: 3}
-  rockCount: 2
+  rockCount: 1
   puddleCount: 0
   barricadeCount: 0
-  mushroomRezenDuration: 10
+  mushroomRezenDuration: 30
   mushroomLastRezenTime: 0
 --- !u!114 &1022174639
 MonoBehaviour:
@@ -2736,7 +2736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba6ed34c338e3dd40b75a9ecce8cd42a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearScore: 150000
+  clearScore: 200000
 --- !u!1001 &1068514667
 PrefabInstance:
   m_ObjectHideFlags: 0

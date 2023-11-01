@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.19024643, g: 0.5923805, b: 0.772789, a: 1}
+  m_IndirectSpecularColor: {r: 0.19024955, g: 0.5923857, b: 0.77175003, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2419,7 +2419,7 @@ MonoBehaviour:
   rockCount: 2
   puddleCount: 2
   barricadeCount: 1
-  mushroomRezenDuration: 10
+  mushroomRezenDuration: 30
   mushroomLastRezenTime: 0
 --- !u!114 &1022174639
 MonoBehaviour:
